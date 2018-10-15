@@ -20,7 +20,9 @@
         <activity
             android:name=".MainTapsActivity"
             android:label="@string/title_activity_main_taps"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LogInActivity" />
+        <activity android:name=".SignUpActivity"></activity>
     </application>
 
 </manifest>
