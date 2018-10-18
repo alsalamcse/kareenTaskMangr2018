@@ -38,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         et5 = findViewById(R.id.et5);
         btn1 = findViewById(R.id.btn1);
         btn1.setOnClickListener(new View.OnClickListener() {
-            
+
 
             @Override
             public void onClick(View view) {
@@ -47,37 +47,42 @@ public class SignUpActivity extends AppCompatActivity {
                 dataHandler();
 
 
-                private void dataHandler () {
-
-                    boolean isok = true;
-                    String email = et4.getText().toString();
-                    String password = et5.getText().toString();
-                    String fname = et1.getText().toString();
-                    String lname = et2.getText().toString();
-                    String phone = et3.getText().toString();
-                    if (email.length() < 4 || email.indexOf('@') < 0 || email.indexOf('.') < 0)
-                    {
-                        et4.setError("Wrong Email");
-                        isok = false;
-                    }
-                    if (password.length() < 8)
-                    {
-                        et5.setError("Have to be at least 8 char");
-                        isok = false;
-                    }
-                    if (isok)
-                    {
-                        creatAcount(email, password);
-                    }
+                {
 
                 }
-            }
-
-
 
             }
-        });
+        }
+
+
+
+
+
     }
+
+    private void dataHandler() {
+
+        boolean isok = true;
+        String email = et4.getText().toString();
+        String password = et5.getText().toString();
+        String fname = et1.getText().toString();
+        String lname = et2.getText().toString();
+        String phone = et3.getText().toString();
+        if (email.length() < 4 || email.indexOf('@') < 0 || email.indexOf('.') < 0) {
+            et4.setError("Wrong Email");
+            isok = false;
+        }
+        if (password.length() < 8) {
+            et5.setError("Have to be at least 8 char");
+            isok = false;
+        }
+        if (isok) {
+            creatAcount(email, password);
+        }
+    }
+
+
+
 
         private void creatAcount(String email, String password)
         {
