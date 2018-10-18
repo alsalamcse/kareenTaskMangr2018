@@ -22,6 +22,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText et1, et2,et3,et4,et5;
     private Button btn1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +38,42 @@ public class SignUpActivity extends AppCompatActivity {
         et5 = findViewById(R.id.et5);
         btn1 = findViewById(R.id.btn1);
         btn1.setOnClickListener(new View.OnClickListener() {
+            
+
             @Override
             public void onClick(View view) {
                 Intent i2 = new Intent(SignUpActivity.this, LogInActivity.class);
                 startActivity(i2);
+                dataHandler();
+
+
+                private void dataHandler () {
+
+                    boolean isok = true;
+                    String email = et4.getText().toString();
+                    String password = et5.getText().toString();
+                    String fname = et1.getText().toString();
+                    String lname = et2.getText().toString();
+                    String phone = et3.getText().toString();
+                    if (email.length() < 4 || email.indexOf('@') < 0 || email.indexOf('.') < 0)
+                    {
+                        et4.setError("Wrong Email");
+                        isok = false;
+                    }
+                    if (password.length() < 8)
+                    {
+                        et5.setError("Have to be at least 8 char");
+                        isok = false;
+                    }
+                    if (isok)
+                    {
+                        creatAcount(email, password);
+                    }
+
+                }
+            }
+
+
 
             }
         });
