@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 public class AddTaskActivity extends AppCompatActivity {
     private EditText etTitle,etText,etDate;
-    private TextView tvImportant,tvNeseccery;
-    private SeekBar skbrImportant,skbrNeseccery;
+    private TextView tvImportant,tvNecessary;
+    private SeekBar skbrImportant,skbrNecessary;
     private Button btSave,btnDatePicker;
 
     @Override
@@ -22,9 +22,9 @@ public class AddTaskActivity extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etText = findViewById(R.id.etText);
         tvImportant = findViewById(R.id.tvImportant);
-        tvNeseccery = findViewById(R.id.tvNeseccery);
+        tvNecessary = findViewById(R.id.tvNecessary);
         skbrImportant = findViewById(R.id.skbrImportant);
-        skbrNeseccery = findViewById(R.id.skbrNeseccery);
+        skbrNecessary = findViewById(R.id.skbrNecessary);
         etDate = findViewById(R.id.etDate);
 
         btSave.setOnClickListener(new View.OnClickListener() {

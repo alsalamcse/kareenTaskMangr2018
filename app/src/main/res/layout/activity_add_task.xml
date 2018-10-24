@@ -37,7 +37,7 @@
         tools:layout_editor_absoluteY="182dp" />
 
     <SeekBar
-        android:id="@+id/skbrNeseccery"
+        android:id="@+id/skbrNecessary"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="214dp"
         android:layout_height="50dp"
@@ -55,10 +55,10 @@
         tools:layout_editor_absoluteY="137dp" />
 
     <TextView
-        android:id="@+id/tvNeseccery"
+        android:id="@+id/tvNecessary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Neseccery"
+        android:text="Necessary"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="246dp" />
 
