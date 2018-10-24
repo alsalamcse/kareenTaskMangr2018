@@ -72,4 +72,16 @@ public class MyTask {
         DueDate = dueDate;
     }
 
+    @Override
+    public String toString() {
+        return "MyTask{" +
+                "key='" + key + '\'' +
+                ", title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                ", important=" + important +
+                ", necessary=" + necessary +
+                ", creatDate=" + creatDate +
+                ", DueDate=" + DueDate +
+                '}';
+    }
 }
