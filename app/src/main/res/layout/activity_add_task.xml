@@ -29,28 +29,62 @@
     <SeekBar
         android:id="@+id/skbrImportant"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="209dp"
+        android:layout_height="51dp"
         android:max="10"
         android:progress="3"
-        tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="170dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="182dp" />
 
     <SeekBar
-        android:id="@+id/seekBar2"
+        android:id="@+id/skbrNeseccery"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="214dp"
+        android:layout_height="50dp"
         android:max="10"
         android:progress="3"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="217dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="277dp" />
 
     <TextView
         android:id="@+id/tvImportant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="69dp"
+        android:layout_height="35dp"
         android:text="Important"
         tools:layout_editor_absoluteX="27dp"
         tools:layout_editor_absoluteY="137dp" />
+
+    <TextView
+        android:id="@+id/tvNeseccery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Neseccery"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="246dp" />
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="due Date"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="349dp" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="459dp" />
+
+    <Button
+        android:id="@+id/btnDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date Picker"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="410dp" />
 </android.support.constraint.ConstraintLayout>
