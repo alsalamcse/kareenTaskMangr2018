@@ -6,61 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
-    <EditText
-        android:id="@+id/et1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="First name"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="4dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/et2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Last name"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="57dp" />
+        <EditText
+            android:id="@+id/et1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="First name"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="6dp"
+            tools:layout_editor_absoluteY="4dp" />
 
-    <EditText
-        android:id="@+id/et3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Phone"
-        android:inputType="phone"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="118dp" />
+        <EditText
+            android:id="@+id/et2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Last name"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="6dp"
+            tools:layout_editor_absoluteY="57dp" />
 
-    <EditText
-        android:id="@+id/et4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="email"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="177dp" />
+        <EditText
+            android:id="@+id/et3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Phone"
+            android:inputType="phone"
+            tools:layout_editor_absoluteX="6dp"
+            tools:layout_editor_absoluteY="118dp" />
 
-    <EditText
-        android:id="@+id/et5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="248dp" />
+        <EditText
+            android:id="@+id/et4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="email"
+            android:inputType="textEmailAddress"
+            tools:layout_editor_absoluteX="6dp"
+            tools:layout_editor_absoluteY="177dp" />
 
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="save"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="341dp" />
+        <EditText
+            android:id="@+id/et5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="248dp" />
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="save"
+            tools:layout_editor_absoluteX="279dp"
+            tools:layout_editor_absoluteY="341dp" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -26,7 +26,13 @@ public class LogInActivity extends AppCompatActivity {
                startActivity(i);
                Intent intent=new Intent(LogInActivity.this,SignUpActivity.class);
                startActivity(intent);
-
+btn2.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent i2=new Intent(LogInActivity.this,MainTapsActivity.class);
+        startActivity(i2);
+    }
+});
            }
        });
     }
