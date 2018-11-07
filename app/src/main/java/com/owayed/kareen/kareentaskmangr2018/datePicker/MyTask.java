@@ -72,6 +72,8 @@ public class MyTask {
         DueDate = dueDate;
     }
 
+
+
     @Override
     public String toString() {
         return "MyTask{" +
@@ -83,5 +85,9 @@ public class MyTask {
                 ", creatDate=" + creatDate +
                 ", DueDate=" + DueDate +
                 '}';
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 }

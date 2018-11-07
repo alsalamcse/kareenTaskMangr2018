@@ -11,7 +11,11 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
+
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddTaskActivity extends AppCompatActivity {
     private EditText etTitle,etText,etDate;
@@ -57,6 +61,21 @@ public class AddTaskActivity extends AppCompatActivity {
         if (text.length() < 8) {
            etText.setError("Have to be at least 8 char");
             isok = false;
+        }
+        if (isok){
+
+            MyTask task=new MyTask();
+            task.setDueDate(new Date(date));
+            task.setText(text);
+            task.setTirle(title);
+            task.setImportant(important);
+            task.setNecessary(necessary);
+
+            FirebaseAuth auth=FirebaseAuth.getInstance();
+            task.setOwner(auth.getCurrentUser().getEmail());
+
+
+
         }
 
     }

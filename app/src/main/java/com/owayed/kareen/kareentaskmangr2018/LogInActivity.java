@@ -50,6 +50,7 @@ public class LogInActivity extends AppCompatActivity {
                            boolean isok = true;
                            String email = et1.getText().toString();
                            String password = et2.getText().toString();
+                           signIn(email,password);
                            if (email.length() < 4 || email.indexOf('@') < 0 || email.indexOf('.') < 0) {
                                et1.setError("Wrong Email");
                                isok = false;
@@ -66,7 +67,13 @@ public class LogInActivity extends AppCompatActivity {
                                    if (task.isSuccessful())
                                    {
                                        Toast.makeText(LogInActivity.this,"signIn Successful",Toast.LENGTH_SHORT).show();
+                                       Intent intent=new Intent(LogInActivity.this,MainTapsActivity.class);
+                                       startActivity(intent);
                                }
+                               else
+                                   {
+                                       Toast.makeText(LogInActivity.this,"LogIn faild"+task.getException());
+                                   }
                            }
 
 
