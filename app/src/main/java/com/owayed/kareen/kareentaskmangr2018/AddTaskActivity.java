@@ -2,6 +2,7 @@ package com.owayed.kareen.kareentaskmangr2018;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +12,11 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
 
 import java.util.Calendar;
@@ -51,15 +56,15 @@ public class AddTaskActivity extends AppCompatActivity {
         String title= etTitle.getText().toString();
         String text = etText.getText().toString();
         String date = etDate.getText().toString();
-        String important=tvImportant.getText().toString();
-        String necessary=tvNecessary.getText().toString();
+        int sImportant=skbrImportant.getProgress();
+        int sNecessary=skbrNecessary.getProgress();
 
-        if (title.length() < 4 || title.indexOf('@') < 0 || title.indexOf('.') < 0) {
-            etTitle.setError("Wrong Email");
+        if (title.length() ==0) {
+            etTitle.setError("You have to write a title")
             isok = false;
         }
-        if (text.length() < 8) {
-           etText.setError("Have to be at least 8 char");
+        if (text.length()==0) {
+           etText.setError("you have to write a text");
             isok = false;
         }
         if (isok){
@@ -68,11 +73,27 @@ public class AddTaskActivity extends AppCompatActivity {
             task.setDueDate(new Date(date));
             task.setText(text);
             task.setTirle(title);
-            task.setImportant(important);
-            task.setNecessary(necessary);
+          task.setImportant(sImportant);
+            task.setNecessary(sNecessary);
 
             FirebaseAuth auth=FirebaseAuth.getInstance();
             task.setOwner(auth.getCurrentUser().getEmail());
+
+            DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+            String key=reference.child("MyTask").push().getKey();
+            task.setKey(key);
+            reference.child("MyTask").child(key).setValue(task).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                }
+            })
+
+
+
+
+
+
 
 
 
