@@ -10,6 +10,7 @@ public class MyTask {
     private int necessary;
     private Date creatDate;
     private Date DueDate;
+    private String owner;
 
     public MyTask()
     {

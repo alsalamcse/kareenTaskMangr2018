@@ -11,6 +11,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -60,7 +61,7 @@ public class AddTaskActivity extends AppCompatActivity {
         int sNecessary=skbrNecessary.getProgress();
 
         if (title.length() ==0) {
-            etTitle.setError("You have to write a title")
+            etTitle.setError("You have to write a title");
             isok = false;
         }
         if (text.length()==0) {
@@ -74,7 +75,7 @@ public class AddTaskActivity extends AppCompatActivity {
             task.setText(text);
             task.setTirle(title);
           task.setImportant(sImportant);
-            task.setNecessary(sNecessary);
+              task.setNecessary(sNecessary);
 
             FirebaseAuth auth=FirebaseAuth.getInstance();
             task.setOwner(auth.getCurrentUser().getEmail());
@@ -84,10 +85,23 @@ public class AddTaskActivity extends AppCompatActivity {
             task.setKey(key);
             reference.child("MyTask").child(key).setValue(task).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
-                public void onComplete(@NonNull Task<Void> task) {
+                public void onComplete(@NonNull Task<Void> task)
+                {
+                    if (task.isSuccessful())
+                    {
+                        Toast.makeText(AddTaskActivity.this,"add Successful",Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(AddTaskActivity.this,"add failes",Toast.LENGTH_LONG).show();
+
+                    }
+
+
+
 
                 }
-            })
+            });
 
 
 

@@ -61,7 +61,8 @@ public class LogInActivity extends AppCompatActivity {
                            }
                            }
                            private void signIn(String email,String passw){
-                           auth.signInWithEmailAndPassword(email, passw).addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
+                           auth=FirebaseAuth.getInstance();
+                               auth.signInWithEmailAndPassword(email, passw).addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
                                @Override
                                public void onComplete(@NonNull Task<AuthResult> task) {
                                    if (task.isSuccessful())
