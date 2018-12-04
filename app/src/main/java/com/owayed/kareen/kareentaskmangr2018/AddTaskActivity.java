@@ -96,23 +96,9 @@ public class AddTaskActivity extends AppCompatActivity {
                         Toast.makeText(AddTaskActivity.this,"add failes",Toast.LENGTH_LONG).show();
 
                     }
-
-
-
-
                 }
             });
-
-
-
-
-
-
-
-
-
         }
-
     }
     public void onClick(View view){
         if (view==btnDatePicker){

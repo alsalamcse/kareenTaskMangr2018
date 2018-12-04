@@ -13,11 +13,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LogInActivity extends AppCompatActivity {
                private EditText et1,et2;
                private Button btn1,btn2;
                private FirebaseAuth auth;
+               private FirebaseUser user;
 
                @Override
                protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +36,14 @@ public class LogInActivity extends AppCompatActivity {
                            startActivity(i);
                            Intent intent=new Intent(LogInActivity.this,SignUpActivity.class);
                            startActivity(intent);
-                           dataHandler();
+
 
                            btn2.setOnClickListener(new View.OnClickListener() {
                                @Override
                                public void onClick(View view) {
                                    Intent i2=new Intent(LogInActivity.this,MainTapsActivity.class);
                                    startActivity(i2);
+                                   dataHandler();
                                }
                            });
                        }
@@ -49,15 +52,18 @@ public class LogInActivity extends AppCompatActivity {
 
                            boolean isok = true;
                            String email = et1.getText().toString();
-                           String password = et2.getText().toString();
-                           signIn(email,password);
+                           String passw = et2.getText().toString();
+                           signIn(email,passw);
                            if (email.length() < 4 || email.indexOf('@') < 0 || email.indexOf('.') < 0) {
                                et1.setError("Wrong Email");
                                isok = false;
                            }
-                           if (password.length() < 8) {
-                               et2.setError("Have to be at least 8 char");
+                           if (passw.length() < 8) {
+                               et2.setError("wrong password");
                                isok = false;
+                           }
+                           if (isok){
+                               signIn(email,passw);
                            }
                            }
                            private void signIn(String email,String passw){
@@ -68,12 +74,14 @@ public class LogInActivity extends AppCompatActivity {
                                    if (task.isSuccessful())
                                    {
                                        Toast.makeText(LogInActivity.this,"signIn Successful",Toast.LENGTH_SHORT).show();
+                                       finish();
                                        Intent intent=new Intent(LogInActivity.this,MainTapsActivity.class);
                                        startActivity(intent);
                                }
                                else
                                    {
                                        Toast.makeText(LogInActivity.this,"LogIn faild"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                                       task.getException().printStackTrace();
                                    }
                            }
 
