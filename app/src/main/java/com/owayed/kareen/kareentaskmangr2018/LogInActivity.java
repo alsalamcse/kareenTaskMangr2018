@@ -30,12 +30,12 @@ public class LogInActivity extends AppCompatActivity {
                    btn1=findViewById(R.id.btn1);
                    btn2=findViewById(R.id.btn2);
                    btn1.setOnClickListener(new View.OnClickListener() {
-                       @Override
-                       public void onClick(View view) {
-                           Intent i = new Intent(LogInActivity.this,MainTapsActivity.class);
-                           startActivity(i);
-                           Intent intent=new Intent(LogInActivity.this,SignUpActivity.class);
-                           startActivity(intent);
+                                               @Override
+                                               public void onClick(View view) {
+                                                   Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
+                                                   startActivity(intent);
+
+
 
 
                            btn2.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +48,11 @@ public class LogInActivity extends AppCompatActivity {
                            });
                        }
 
-                       private void dataHandler() {
+
+
+
+
+    private void dataHandler() {
 
                            boolean isok = true;
                            String email = et1.getText().toString();
