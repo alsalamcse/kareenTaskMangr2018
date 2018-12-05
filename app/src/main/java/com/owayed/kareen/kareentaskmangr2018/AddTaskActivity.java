@@ -61,11 +61,11 @@ public class AddTaskActivity extends AppCompatActivity {
         int sNecessary=skbrNecessary.getProgress();
 
         if (title.length() ==0) {
-            etTitle.setError("You have to write a title");
+            etTitle.setError("Title can not be empty");
             isok = false;
         }
         if (text.length()==0) {
-           etText.setError("you have to write a text");
+           etText.setError("Text can not to be empty");
             isok = false;
         }
         if (isok){

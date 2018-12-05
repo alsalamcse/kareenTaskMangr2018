@@ -45,33 +45,39 @@ public class MainTapsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_taps);
+try {
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+    // Create the adapter that will return a fragment for each of the three
+    // primary sections of the activity.
+    mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+    // Set up the ViewPager with the sections adapter.
+    mViewPager = (ViewPager) findViewById(R.id.container);
+    mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+    TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                Intent intent = new Intent(MainTapsActivity.this, AddTaskActivity.class);
-                startActivity(intent);
-            }
-        });
+    mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+    tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+    fab.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+            Intent intent = new Intent(MainTapsActivity.this, AddTaskActivity.class);
+            startActivity(intent);
+        }
+    });
+}
+catch (Exception e)
+{
+    e.printStackTrace();
+}
     }
 
 
@@ -153,21 +159,21 @@ public class MainTapsActivity extends AppCompatActivity {
             if (position==0)
             {
                 if (myTasksFragment==null) {
-                    new MyTasksFragment();
+                    myTasksFragment=  new MyTasksFragment();
                 }
                 return myTasksFragment;
             }
             if (position==1)
             {
                 if (tasksHistoryFragment==null) {
-                    new TasksHistoryFragment();
+                    tasksHistoryFragment= new TasksHistoryFragment();
                 }
                 return tasksHistoryFragment;
             }
             if (position==2)
             {
                 if (profileFragment==null) {
-                    new ProfileFragment();
+                    profileFragment= new ProfileFragment();
                 }
                 return profileFragment;
             }
