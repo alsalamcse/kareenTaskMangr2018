@@ -29,6 +29,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private SeekBar skbrImportant,skbrNecessary;
     private Button btSave,btnDatePicker;
     private int mYear,mMonth,mDay;
+    private Date myDate=new Date();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +110,11 @@ public class AddTaskActivity extends AppCompatActivity {
             DatePickerDialog datePickerDialog=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int dayOfMonth, int monthOfYear, int year) {
+                    c.set(Calendar.YEAR,year);
+                    c.set(Calendar.MONTH,monthOfYear);
+                    c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                    myDate=c.getTime();
+
                     etDate.setText(dayOfMonth+"-"+(monthOfYear+1)+"-"+year);
 
                 }

@@ -67,17 +67,20 @@ public class LogInActivity extends AppCompatActivity {
         }
     }
 
-    private void signIn(String email, String passw) {
+    private void signIn(String email, String passw)
+    {
         auth = FirebaseAuth.getInstance();
         auth.signInWithEmailAndPassword(email, passw).addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
+                if (task.isSuccessful())
+                {
                     Toast.makeText(LogInActivity.this, "signIn Successful", Toast.LENGTH_SHORT).show();
                     finish();
                     Intent intent = new Intent(LogInActivity.this, MainTapsActivity.class);
                     startActivity(intent);
-                } else {
+                } else
+                    {
                     Toast.makeText(LogInActivity.this, "LogIn faild" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     task.getException().printStackTrace();
                 }
@@ -88,5 +91,6 @@ public class LogInActivity extends AppCompatActivity {
 
 
     }
+
 
 }
