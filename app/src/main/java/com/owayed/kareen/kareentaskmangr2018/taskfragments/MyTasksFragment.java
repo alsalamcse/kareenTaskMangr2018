@@ -69,7 +69,7 @@ public class MyTasksFragment extends Fragment {
     }
     private List<MyTask> readTasks()
     {
-        final ArrayList<MyTask> myTasks=null;
+        final ArrayList<MyTask> myTasks=new ArrayList<>();
         //reference to the database root
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
         reference.child("MyTasks").addValueEventListener(new ValueEventListener() {

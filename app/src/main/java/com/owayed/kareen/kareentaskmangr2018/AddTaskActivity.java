@@ -41,6 +41,7 @@ public class AddTaskActivity extends AppCompatActivity {
         tvNecessary = findViewById(R.id.tvNecessary);
         skbrImportant = findViewById(R.id.skbrImportant);
         skbrNecessary = findViewById(R.id.skbrNecessary);
+        btSave=findViewById(R.id.btSave);
         etDate = findViewById(R.id.etDate);
 
         btSave.setOnClickListener(new View.OnClickListener() {
