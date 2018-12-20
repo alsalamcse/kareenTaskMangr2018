@@ -27,7 +27,7 @@ public class AddTaskActivity extends AppCompatActivity {
     private EditText etTitle,etText,etDate;
     private TextView tvImportant,tvNecessary;
     private SeekBar skbrImportant,skbrNecessary;
-    private Button btSave,btnDatePicker;
+    private Button btSave,btnDate;
     private int mYear,mMonth,mDay;
     private Date myDate=new Date();
 
@@ -41,6 +41,7 @@ public class AddTaskActivity extends AppCompatActivity {
         tvNecessary = findViewById(R.id.tvNecessary);
         skbrImportant = findViewById(R.id.skbrImportant);
         skbrNecessary = findViewById(R.id.skbrNecessary);
+        btnDate=findViewById(R.id.btnDate);
         btSave=findViewById(R.id.btSave);
         etDate = findViewById(R.id.etDate);
 
@@ -103,7 +104,7 @@ public class AddTaskActivity extends AppCompatActivity {
         }
     }
     public void onClick(View view){
-        if (view==btnDatePicker){
+        if (view==btnDate){
             final Calendar c=Calendar.getInstance();
             mYear=c.get(Calendar.YEAR);
             mMonth=c.get(Calendar.MONTH);
