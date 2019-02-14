@@ -3,13 +3,24 @@ package com.owayed.kareen.kareentaskmangr2018;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class SplashActivity extends AppCompatActivity {
+    private Button btnEntering;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        btnEntering=findViewById(R.id.btnEntering);
+        btnEntering.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SplashActivity.this,LogInActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
