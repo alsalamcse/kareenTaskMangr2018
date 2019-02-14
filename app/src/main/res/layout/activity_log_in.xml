@@ -28,7 +28,7 @@
         tools:layout_editor_absoluteY="96dp" />
 
     <Button
-        android:id="@+id/btn2"
+        android:id="@+id/btnAdopter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="sign in adopter"
@@ -36,7 +36,7 @@
         tools:layout_editor_absoluteY="197dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnOwner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="sign in owner" />
