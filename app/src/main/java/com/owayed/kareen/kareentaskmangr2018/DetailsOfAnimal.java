@@ -1,7 +1,6 @@
 package com.owayed.kareen.kareentaskmangr2018;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,7 +22,7 @@ import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AddTaskActivity extends AppCompatActivity {
+public class DetailsOfAnimal extends AppCompatActivity {
     private EditText etTitle,etText,etDate;
     private TextView tvImportant,tvNecessary;
     private SeekBar skbrImportant,skbrNecessary;
@@ -34,7 +33,7 @@ public class AddTaskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_task);
+        setContentView(R.layout.DetailsOfAnimal);
         etTitle = findViewById(R.id.etTitle);
         etText = findViewById(R.id.etText);
         tvImportant = findViewById(R.id.tvImportant);
@@ -92,11 +91,11 @@ public class AddTaskActivity extends AppCompatActivity {
                 {
                     if (task.isSuccessful())
                     {
-                        Toast.makeText(AddTaskActivity.this,"add Successful",Toast.LENGTH_LONG).show();
+                        Toast.makeText(DetailsOfAnimal.this,"add Successful",Toast.LENGTH_LONG).show();
                     }
                     else
                     {
-                        Toast.makeText(AddTaskActivity.this,"add failes",Toast.LENGTH_LONG).show();
+                        Toast.makeText(DetailsOfAnimal.this,"add failes",Toast.LENGTH_LONG).show();
 
                     }
                 }

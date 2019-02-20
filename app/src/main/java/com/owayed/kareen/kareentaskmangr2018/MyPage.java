@@ -1,6 +1,5 @@
 package com.owayed.kareen.kareentaskmangr2018;
 
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,11 +19,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import com.owayed.kareen.kareentaskmangr2018.taskfragments.MyTasksFragment;
-import com.owayed.kareen.kareentaskmangr2018.taskfragments.ProfileFragment;
-import com.owayed.kareen.kareentaskmangr2018.taskfragments.TasksHistoryFragment;
-
-public class MainTapsActivity extends AppCompatActivity {
+public class MyPage extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -44,47 +39,39 @@ public class MainTapsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_taps);
-try {
+        setContentView(R.layout.activity_my_page);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
-    // Create the adapter that will return a fragment for each of the three
-    // primary sections of the activity.
-    mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
 
-    // Set up the ViewPager with the sections adapter.
-    mViewPager = (ViewPager) findViewById(R.id.container);
-    mViewPager.setAdapter(mSectionsPagerAdapter);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-    TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-    mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-    tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
 
-    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
-            Intent intent = new Intent(MainTapsActivity.this, DetailsOfAnimal.class);
-            startActivity(intent);
-        }
-    });
-}
-catch (Exception e)
-{
-    e.printStackTrace();
-}
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_taps, menu);
+        getMenuInflater().inflate(R.menu.menu_my_page, menu);
         return true;
     }
 
@@ -131,7 +118,7 @@ catch (Exception e)
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main_taps, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_my_page, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
@@ -142,13 +129,7 @@ catch (Exception e)
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class SectionsPagerAdapter extends FragmentPagerAdapter
-    {
-        MyTasksFragment myTasksFragment;
-        TasksHistoryFragment tasksHistoryFragment;
-        ProfileFragment profileFragment;
-
-
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -156,27 +137,8 @@ catch (Exception e)
 
         @Override
         public Fragment getItem(int position) {
-            if (position==0)
-            {
-                if (myTasksFragment==null) {
-                    myTasksFragment=  new MyTasksFragment();
-                }
-                return myTasksFragment;
-            }
-            if (position==1)
-            {
-                if (tasksHistoryFragment==null) {
-                    tasksHistoryFragment= new TasksHistoryFragment();
-                }
-                return tasksHistoryFragment;
-            }
-            if (position==2)
-            {
-                if (profileFragment==null) {
-                    profileFragment= new ProfileFragment();
-                }
-                return profileFragment;
-            }
+            // getItem is called to instantiate the fragment for the given page.
+            // Return a PlaceholderFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position + 1);
         }
 
@@ -184,17 +146,6 @@ catch (Exception e)
         public int getCount() {
             // Show 3 total pages.
             return 3;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            if (position==0)
-                return "Tasks";
-            if (position==1)
-                return "History";
-            if (position==2)
-                return "Profile";
-            return "noName";
         }
     }
 }

@@ -28,6 +28,7 @@ public class LogInActivity extends AppCompatActivity {
         et1 = findViewById(R.id.et1);
         et2 = findViewById(R.id.et2);
         btn1 = findViewById(R.id.btn1);
+        btnowner=findViewById(R.id.btnOwner);
         btnAdopter = findViewById(R.id.btnAdopter);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -23,7 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".AddTaskActivity" />
+        <activity android:name=".DetailsOfAnimal" />
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
@@ -32,7 +32,11 @@
             android:name=".WhoAskActivity"
             android:label="@string/title_activity_who_ask"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AddAnimalActivity"></activity>
+        <activity android:name=".AddAnimalActivity" />
+        <activity
+            android:name=".MyPage"
+            android:label="@string/title_activity_my_page"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
