@@ -17,34 +17,29 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.AddAnimal;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
 
 import java.util.Calendar;
 import java.util.Date;
 
 public class DetailsOfAnimal extends AppCompatActivity {
-    private EditText etTitle,etText,etDate;
-    private TextView tvImportant,tvNecessary;
-    private SeekBar skbrImportant,skbrNecessary;
-    private Button btSave,btnDate;
-    private int mYear,mMonth,mDay;
-    private Date myDate=new Date();
+    private EditText etType,etAge,etColor,etMoney,etAddress;
+    private Button btnSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.DetailsOfAnimal);
-        etTitle = findViewById(R.id.etTitle);
-        etText = findViewById(R.id.etText);
-        tvImportant = findViewById(R.id.tvImportant);
-        tvNecessary = findViewById(R.id.tvNecessary);
-        skbrImportant = findViewById(R.id.skbrImportant);
-        skbrNecessary = findViewById(R.id.skbrNecessary);
-        btnDate=findViewById(R.id.btnDate);
-        btSave=findViewById(R.id.btSave);
-        etDate = findViewById(R.id.etDate);
+        etType = findViewById(R.id.etType);
+        etAge = findViewById(R.id.etAge);
+        etColor = findViewById(R.id.etColor);
+        etMoney = findViewById(R.id.etMoney);
+        etAddress=findViewById(R.id.etAddress);
+        btnSave=findViewById(R.id.btnSave);
 
-        btSave.setOnClickListener(new View.OnClickListener() {
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -56,28 +51,41 @@ public class DetailsOfAnimal extends AppCompatActivity {
     private void dataHandler(){
 
         boolean isok = true;
-        String title= etTitle.getText().toString();
-        String text = etText.getText().toString();
-        String date = etDate.getText().toString();
-        int sImportant=skbrImportant.getProgress();
-        int sNecessary=skbrNecessary.getProgress();
+        String Type= etType.getText().toString();
+        String Color = etColor.getText().toString();
+        String Address = etAddress.getText().toString();
+        String Age=etAge.getText().toString();
+        String Money=etMoney.getText().toString();
 
-        if (title.length() ==0) {
-            etTitle.setError("Title can not be empty");
+
+        if (Type.length() ==0) {
+            etType.setError("Type can not be empty");
             isok = false;
         }
-        if (text.length()==0) {
-           etText.setError("Text can not to be empty");
+        if (Color.length()==0) {
+           etColor.setError("Color can not to be empty");
+            isok = false;
+        }
+        if (Address.length()==0) {
+            etAddress.setError("Address can not to be empty");
+            isok = false;
+        }
+        if (Age.length()==0) {
+            etAge.setError("Age can not to be empty");
+            isok = false;
+        }
+        if (Money.length()==0) {
+            etMoney.setError("Money can not to be empty");
             isok = false;
         }
         if (isok){
 
             MyTask task=new MyTask();
-            task.setDueDate(new Date(date));
-            task.setText(text);
-            task.setTirle(title);
-          task.setImportant(sImportant);
-              task.setNecessary(sNecessary);
+            AddAnimal animal= new AddAnimal();
+
+            animal.setType(Type);
+            animal.setColor(Color);
+
 
             FirebaseAuth auth=FirebaseAuth.getInstance();
             task.setOwner(auth.getCurrentUser().getEmail());
@@ -101,30 +109,11 @@ public class DetailsOfAnimal extends AppCompatActivity {
                 }
             });
         }
-    }
-    public void onClick(View view){
-        if (view==btnDate){
-            final Calendar c=Calendar.getInstance();
-            mYear=c.get(Calendar.YEAR);
-            mMonth=c.get(Calendar.MONTH);
-            mDay=c.get(Calendar.DAY_OF_MONTH);
-            DatePickerDialog datePickerDialog=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int dayOfMonth, int monthOfYear, int year) {
-                    c.set(Calendar.YEAR,year);
-                    c.set(Calendar.MONTH,monthOfYear);
-                    c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-                    myDate=c.getTime();
 
-                    etDate.setText(dayOfMonth+"-"+(monthOfYear+1)+"-"+year);
 
-                }
-            },
-                    mYear,mMonth,mDay);
-            datePickerDialog.show();
         }
 
-    }
+
 
 
 }

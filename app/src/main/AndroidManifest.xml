@@ -32,7 +32,6 @@
             android:name=".WhoAskActivity"
             android:label="@string/title_activity_who_ask"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AddAnimalActivity" />
         <activity
             android:name=".MyPage"
             android:label="@string/title_activity_my_page"

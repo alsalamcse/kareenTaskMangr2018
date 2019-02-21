@@ -5,7 +5,7 @@ import android.media.Image;
 public class AddAnimal {
     private String type;
     private int age;
-    private String name;
+    private String Color;
     private String address;
     private int money;
     private Image picture;
@@ -29,12 +29,12 @@ public class AddAnimal {
         this.age = age;
     }
 
-    public String getName() {
-        return name;
+    public String getColor() {
+        return Color;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setColor(String Color) {
+        this.Color = Color;
     }
 
     public String getAddress() {
@@ -67,7 +67,7 @@ public class AddAnimal {
         return "MyTask{" +
                 "type='" + type + '\'' +
                 ", age='" + age + '\'' +
-                ", name='" + name + '\'' +
+                ", name='" + Color + '\'' +
                 ", address=" + address +
                 ", money=" + money +
                 ", picture=" + picture +

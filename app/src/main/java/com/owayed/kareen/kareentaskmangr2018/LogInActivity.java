@@ -43,6 +43,7 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 dataHandler();
             }
         });
@@ -73,6 +74,7 @@ public class LogInActivity extends AppCompatActivity {
         if (isok) {
             signIn(email, passw);
         }
+
     }
 
     private void signIn(String email, String passw)
