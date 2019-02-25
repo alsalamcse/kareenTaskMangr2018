@@ -23,7 +23,6 @@ public class TaskAdopter extends ArrayAdapter<AddAnimal>
 
     @Override
     public View getView(int position,  View convertView,  ViewGroup parent) {
-        return super.getView(position, convertView, parent);
 
         if(convertView==null)
             convertView=LayoutInflater.from(getContext()).inflate(R.layout.taskitim,parent,false);

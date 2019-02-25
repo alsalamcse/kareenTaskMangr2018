@@ -1,16 +1,13 @@
 package com.owayed.kareen.kareentaskmangr2018;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,17 +18,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.AddAnimal;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class DetailsOfAnimal extends AppCompatActivity {
     private EditText etType,etAge,etColor,etMoney,etAddress;
-    private Button btnSave,ibPicture;
+    private Button btnSave;
+    private ImageButton ibPicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.DetailsOfAnimal);
+        setContentView(R.layout.details_of_animal);
         etType = findViewById(R.id.etType);
         etAge = findViewById(R.id.etAge);
         etColor = findViewById(R.id.etColor);
@@ -44,7 +39,7 @@ public class DetailsOfAnimal extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(DetailsOfAnimal.this,WhoAskActivity.class);
+                Intent i=new Intent(DetailsOfAnimal.this,MainTapsActivity.class);
                 startActivity(i);
 
                 dataHandler();
