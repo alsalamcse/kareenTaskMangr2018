@@ -1,6 +1,7 @@
 package com.owayed.kareen.kareentaskmangr2018;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ import java.util.Date;
 
 public class DetailsOfAnimal extends AppCompatActivity {
     private EditText etType,etAge,etColor,etMoney,etAddress;
-    private Button btnSave;
+    private Button btnSave,ibPicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class DetailsOfAnimal extends AppCompatActivity {
         etAge = findViewById(R.id.etAge);
         etColor = findViewById(R.id.etColor);
         etMoney = findViewById(R.id.etMoney);
+        ibPicture=findViewById(R.id.ibPicture);
         etAddress=findViewById(R.id.etAddress);
         btnSave=findViewById(R.id.btnSave);
 
@@ -42,6 +44,8 @@ public class DetailsOfAnimal extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i=new Intent(DetailsOfAnimal.this,WhoAskActivity.class);
+                startActivity(i);
 
                 dataHandler();
 
