@@ -36,7 +36,8 @@
             android:name=".MyPage"
             android:label="@string/title_activity_my_page"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ShowAllTasksActivity"></activity>
+        <activity android:name=".ShowAllTasksActivity" />
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
@@ -21,7 +22,10 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
+
+
 public class WhoRequestFragment extends Fragment {
+
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
