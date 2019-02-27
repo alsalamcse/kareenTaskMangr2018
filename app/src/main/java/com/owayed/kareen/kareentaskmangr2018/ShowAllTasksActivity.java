@@ -10,7 +10,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.AddAnimal;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.TaskAdopter;
 
 public class ShowAllTasksActivity extends AppCompatActivity {
@@ -38,7 +38,7 @@ public class ShowAllTasksActivity extends AppCompatActivity {
                 animalAdopter.clear();
                 for (DataSnapshot d:dataSnapshot.getChildren())
                 {
-                    AddAnimal animal=d.getValue(AddAnimal.class);
+                    Animal animal=d.getValue(Animal.class);
                     animalAdopter.add(animal);
                 }
                 animalAdopter.notifyDataSetChanged();

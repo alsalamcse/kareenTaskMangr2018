@@ -1,4 +1,4 @@
-package com.owayed.kareen.kareentaskmangr2018;
+package com.owayed.kareen.kareentaskmangr2018.whofragments;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.owayed.kareen.kareentaskmangr2018.WhoRequestFragment.OnListFragmentInteractionListener;
+import com.owayed.kareen.kareentaskmangr2018.R;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
+import com.owayed.kareen.kareentaskmangr2018.whofragments.WhoRequestFragment.OnListFragmentInteractionListener;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
 
 import java.util.List;
@@ -18,10 +20,10 @@ import java.util.List;
  */
 public class MyWhoRequestRecyclerViewAdapter extends RecyclerView.Adapter<MyWhoRequestRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Animal> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyWhoRequestRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyWhoRequestRecyclerViewAdapter(List<Animal> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -36,8 +38,8 @@ public class MyWhoRequestRecyclerViewAdapter extends RecyclerView.Adapter<MyWhoR
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getType());
+        holder.mContentView.setText(mValues.get(position).getAddress());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +62,7 @@ public class MyWhoRequestRecyclerViewAdapter extends RecyclerView.Adapter<MyWhoR
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Animal mItem;
 
         public ViewHolder(View view) {
             super(view);

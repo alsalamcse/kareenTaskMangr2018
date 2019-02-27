@@ -2,18 +2,26 @@ package com.owayed.kareen.kareentaskmangr2018.datePicker;
 
 import android.media.Image;
 
-public class AddAnimal {
+public class Animal {
     private String type;
+    private String name;
     private int age;
     private String Color;
     private String address;
     private int money;
     private Image picture;
 
-    public AddAnimal()
+    public Animal()
     {
 
     }
+
+    public static void add(MyTask task) {
+    }
+
+    public static void clear() {
+    }
+
     public String getType() {
         return type;
     }

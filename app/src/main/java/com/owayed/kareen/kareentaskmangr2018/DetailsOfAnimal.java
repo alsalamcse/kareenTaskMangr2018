@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.AddAnimal;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
 
 public class DetailsOfAnimal extends AppCompatActivity {
@@ -80,7 +80,7 @@ public class DetailsOfAnimal extends AppCompatActivity {
         if (isok){
 
             MyTask task=new MyTask();
-            AddAnimal animal= new AddAnimal();
+            Animal animal= new Animal();
 
             animal.setType(Type);
             animal.setColor(Color);
