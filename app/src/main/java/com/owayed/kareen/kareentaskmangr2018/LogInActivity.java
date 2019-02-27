@@ -25,6 +25,14 @@ public class LogInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+
+        auth=FirebaseAuth.getInstance();
+        if (auth.getCurrentUser()!=null&&auth.getCurrentUser().getEmail()!=null)
+        {
+            Intent intent=new Intent(LogInActivity.this,MainTapsActivity.class);
+            startActivity(intent);
+        }
+
         et1 = findViewById(R.id.et1);
         et2 = findViewById(R.id.et2);
         btn1 = findViewById(R.id.btn1);
