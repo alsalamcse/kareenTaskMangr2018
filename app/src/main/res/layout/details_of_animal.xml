@@ -12,8 +12,16 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName" />
+
+        <EditText
             android:id="@+id/etType"
-            android:layout_width="210dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Type"
@@ -24,7 +32,7 @@
 
         <EditText
             android:id="@+id/etAge"
-            android:layout_width="213dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Age"
@@ -33,7 +41,7 @@
 
         <EditText
             android:id="@+id/etColor"
-            android:layout_width="213dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Color"
@@ -44,7 +52,7 @@
 
         <EditText
             android:id="@+id/etMoney"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Money"
@@ -52,7 +60,7 @@
 
         <EditText
             android:id="@+id/etAddress"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Address"

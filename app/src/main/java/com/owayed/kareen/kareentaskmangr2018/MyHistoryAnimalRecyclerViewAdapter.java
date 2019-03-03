@@ -7,22 +7,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.owayed.kareen.kareentaskmangr2018.HistoryAnimalFragment.OnListFragmentInteractionListener;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Animal} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MyHistoryAnimalRecyclerViewAdapter extends RecyclerView.Adapter<MyHistoryAnimalRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Animal> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyHistoryAnimalRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public MyHistoryAnimalRecyclerViewAdapter(List<Animal> animals, OnListFragmentInteractionListener listener) {
+        mValues = animals;
         mListener = listener;
     }
 
@@ -36,8 +37,8 @@ public class MyHistoryAnimalRecyclerViewAdapter extends RecyclerView.Adapter<MyH
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getName());
+        holder.mContentView.setText(mValues.get(position).getName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +61,7 @@ public class MyHistoryAnimalRecyclerViewAdapter extends RecyclerView.Adapter<MyH
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Animal mItem;
 
         public ViewHolder(View view) {
             super(view);

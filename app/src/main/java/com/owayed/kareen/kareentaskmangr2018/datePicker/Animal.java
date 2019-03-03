@@ -5,10 +5,10 @@ import android.media.Image;
 public class Animal {
     private String type;
     private String name;
-    private int age;
+    private String age;
     private String Color;
     private String address;
-    private int money;
+    private String money;
     private Image picture;
 
     public Animal()
@@ -29,11 +29,18 @@ public class Animal {
     public void setType(String type) {
         this.type = type;
     }
-    public int getAge() {
+
+    public String getName(){return name;}
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -53,11 +60,11 @@ public class Animal {
         this.address = address;
     }
 
-    public int getMoney() {
+    public String getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(String money) {
         this.money = money;
     }
 

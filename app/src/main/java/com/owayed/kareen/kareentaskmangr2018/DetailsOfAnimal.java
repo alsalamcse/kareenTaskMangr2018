@@ -19,7 +19,7 @@ import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
 
 public class DetailsOfAnimal extends AppCompatActivity {
-    private EditText etType,etAge,etColor,etMoney,etAddress;
+    private EditText etType,etAge,etColor,etMoney,etAddress,etName;
     private Button btnSave;
     private ImageButton ibPicture;
 
@@ -27,6 +27,7 @@ public class DetailsOfAnimal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_of_animal);
+        etName=findViewById(R.id.etName);
         etType = findViewById(R.id.etType);
         etAge = findViewById(R.id.etAge);
         etColor = findViewById(R.id.etColor);
@@ -50,12 +51,18 @@ public class DetailsOfAnimal extends AppCompatActivity {
     private void dataHandler(){
 
         boolean isok = true;
+        String Name=etName.getText().toString();
         String Type= etType.getText().toString();
         String Color = etColor.getText().toString();
         String Address = etAddress.getText().toString();
         String Age=etAge.getText().toString();
         String Money=etMoney.getText().toString();
 
+
+        if (Name.length() ==0) {
+            etName.setError("Name can not be empty");
+            isok = false;
+        }
 
         if (Type.length() ==0) {
             etType.setError("Type can not be empty");
@@ -84,15 +91,20 @@ public class DetailsOfAnimal extends AppCompatActivity {
 
             animal.setType(Type);
             animal.setColor(Color);
+            animal.setAddress(Address);
+            animal.setAge(Age);
+            animal.setName(Name);
+            animal.setMoney(Money);
+
 
 
             FirebaseAuth auth=FirebaseAuth.getInstance();
             task.setOwner(auth.getCurrentUser().getEmail());
 
             DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-            String key=reference.child("MyTask").push().getKey();
+            String key=reference.child("MyAnimal").push().getKey();
             task.setKey(key);
-            reference.child("MyTask").child(key).setValue(task).addOnCompleteListener(new OnCompleteListener<Void>() {
+            reference.child("MyAnimal").child(key).setValue(task).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task)
                 {
