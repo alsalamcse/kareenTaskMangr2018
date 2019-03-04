@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.owayed.kareen.kareentaskmangr2018.HistoryAnimalFragment.OnListFragmentInteractionListener;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
 
@@ -20,9 +19,9 @@ import java.util.List;
 public class MyHistoryAnimalRecyclerViewAdapter extends RecyclerView.Adapter<MyHistoryAnimalRecyclerViewAdapter.ViewHolder> {
 
     private final List<Animal> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final HistoryAnimalFragment.OnListFragmentInteractionListener mListener;
 
-    public MyHistoryAnimalRecyclerViewAdapter(List<Animal> animals, OnListFragmentInteractionListener listener) {
+    public MyHistoryAnimalRecyclerViewAdapter(List<Animal> animals, HistoryAnimalFragment.OnListFragmentInteractionListener listener) {
         mValues = animals;
         mListener = listener;
     }
@@ -74,5 +73,9 @@ public class MyHistoryAnimalRecyclerViewAdapter extends RecyclerView.Adapter<MyH
         public String toString() {
             return super.toString() + " '" + mContentView.getText() + "'";
         }
+    }
+    public interface OnListFragmentInteractionListener {
+        // TODO: Update argument type and name
+        void onListFragmentInteraction(Animal item);
     }
 }

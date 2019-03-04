@@ -7,9 +7,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class DetailsOfAnimal extends AppCompatActivity {
     private TextView tvName,tvType,tvAge,tvColor,tvMoney,tvAddress;
     private Button btnRequest;
+    private FirebaseAuth auth;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,5 +35,11 @@ public class DetailsOfAnimal extends AppCompatActivity {
 
             }
         });
+    }
+    private void Request()
+    {
+        auth = FirebaseAuth.getInstance();
+
+
     }
 }

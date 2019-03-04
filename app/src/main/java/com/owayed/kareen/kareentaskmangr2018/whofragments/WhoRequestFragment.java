@@ -75,6 +75,7 @@ public class WhoRequestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_whorequest_list, container, false);
+       if(adapter==null)
         adapter=new MyWhoRequestRecyclerViewAdapter(animalList,mListener);
 
         // Set the adapter

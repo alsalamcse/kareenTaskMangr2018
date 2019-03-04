@@ -9,11 +9,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +36,8 @@ public class HistoryAnimalFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    MyHistoryAnimalRecyclerViewAdapter adapter;
+    List<Animal>animalList;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -60,6 +69,8 @@ public class HistoryAnimalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_historyanimal_list, container, false);
+        if (adapter==null)
+         adapter=new MyHistoryAnimalRecyclerViewAdapter(animalList,mListener);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -70,20 +81,46 @@ public class HistoryAnimalFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyHistoryAnimalRecyclerViewAdapter(Animal., mListener));
+            recyclerView.setAdapter(adapter);
         }
         return view;
     }
+    private List<Animal>readAnimal() {
+        final ArrayList<Animal> myAnimal = new ArrayList<>();
+        //reference to the database root
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+        reference.child("MyAnimals").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Toast.makeText(getContext(), "data changed", Toast.LENGTH_SHORT).show();
+                myAnimal.clear();
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    Animal animal = d.getValue(Animal.class);
+
+                    myAnimal.add(animal);
 
 
-    @Override
+                }
+                adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return myAnimal;
+    }
+            @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+     //       throw new RuntimeException(context.toString()
+     //               + " must implement OnListFragmentInteractionListener");
         }
     }
 
