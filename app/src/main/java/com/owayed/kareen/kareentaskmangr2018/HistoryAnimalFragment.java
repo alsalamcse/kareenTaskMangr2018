@@ -70,7 +70,7 @@ public class HistoryAnimalFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyHistoryAnimalRecyclerViewAdapter(Animal.ITEMS, mListener));
+            recyclerView.setAdapter(new MyHistoryAnimalRecyclerViewAdapter(Animal., mListener));
         }
         return view;
     }

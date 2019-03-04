@@ -69,7 +69,7 @@ try {
         public void onClick(View view) {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
-            Intent intent = new Intent(MainTapsActivity.this, DetailsOfAnimal.class);
+            Intent intent = new Intent(MainTapsActivity.this, AddOfAnimal.class);
             startActivity(intent);
         }
     });

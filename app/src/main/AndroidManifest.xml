@@ -23,7 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".DetailsOfAnimal" />
+        <activity android:name=".AddOfAnimal" />
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
@@ -37,7 +37,8 @@
             android:label="@string/title_activity_my_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ShowAllTasksActivity" />
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".DetailsOfAnimal"></activity>
     </application>
 
 </manifest>
