@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.owayed.kareen.kareentaskmangr2018.whofragments.WhoRequestFragment;
 
 public class LogInActivity extends AppCompatActivity {
     private EditText et1, et2;
@@ -58,7 +59,7 @@ public class LogInActivity extends AppCompatActivity {
         btnowner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(LogInActivity.this,WhoAskActivity.class);
+                Intent i=new Intent(LogInActivity.this,WhoRequestFragment.class);
                 startActivity(i);
             }
         });
