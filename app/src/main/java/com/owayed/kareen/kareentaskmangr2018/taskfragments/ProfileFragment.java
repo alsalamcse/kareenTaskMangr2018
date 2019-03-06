@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -67,10 +68,14 @@ private FirebaseAuth auth;
                 DataSnapshot d=dataSnapshot.getChildren().iterator().next();
                 MyProfile p=d.getValue(MyProfile.class);
                 etName.setText(p.getName());
+                etAge.setText(p.getAge());
+                etEmail.setText(p.getEmail());
+                etPhone.setText(p.getPhoneNumber());
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getContext(),"onCancelled",Toast.LENGTH_SHORT).show();
 
             }
         })
