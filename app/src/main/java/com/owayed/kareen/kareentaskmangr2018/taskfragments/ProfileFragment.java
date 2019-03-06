@@ -10,9 +10,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.owayed.kareen.kareentaskmangr2018.R;
 import com.owayed.kareen.kareentaskmangr2018.WhoAskActivity;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.MyProfile;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +26,7 @@ import com.owayed.kareen.kareentaskmangr2018.WhoAskActivity;
 public class ProfileFragment extends Fragment {
 private EditText etName,etPhone,etAge,etEmail;
 private Button btnSave;
+private FirebaseAuth auth;
 
 
 
@@ -52,7 +59,21 @@ private Button btnSave;
     }
 
     private void getProfile() {
-        DatabaseReference reference=
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
+        String email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        reference.child("MyProfile").child(email.replace('.','*')).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                DataSnapshot d=dataSnapshot.getChildren().iterator().next();
+                MyProfile p=d.getValue(MyProfile.class);
+                etName.setText(p.getName());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        })
 
     }
 
