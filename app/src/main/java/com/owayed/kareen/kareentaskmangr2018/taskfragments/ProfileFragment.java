@@ -78,7 +78,7 @@ private FirebaseAuth auth;
                 Toast.makeText(getContext(),"onCancelled",Toast.LENGTH_SHORT).show();
 
             }
-        })
+        });
 
     }
 

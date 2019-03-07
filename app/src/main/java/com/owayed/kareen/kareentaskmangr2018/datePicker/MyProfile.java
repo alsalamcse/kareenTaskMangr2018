@@ -1,11 +1,16 @@
 package com.owayed.kareen.kareentaskmangr2018.datePicker;
 
+import android.graphics.Color;
+
 public class MyProfile {
 
     private String name;
     private String PhoneNumber;
     private String Email;
     private String Age;
+    private String Color;
+    private String Address;
+    private String Money;
 
     public String getName() {
         return name;
@@ -47,5 +52,17 @@ public class MyProfile {
                 ", Email='" + Email + '\'' +
                 ", Age='" + Age + '\'' +
                 '}';
+    }
+
+    public String getColor() {
+        return Color;
+    }
+
+    public String getMoney() {
+        return Money;
+    }
+
+    public String getAddress() {
+        return Address;
     }
 }

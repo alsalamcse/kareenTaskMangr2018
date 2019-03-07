@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "474605492146-2v2v9m76i3ifi4104nsu9ib08rrhq7qd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.owayed.kareen.kareentaskmangr2018",
+            "certificate_hash": "8d4e87598d212bdb282d05faa7766dc9c486dbdf"
+          }
+        },
+        {
           "client_id": "474605492146-kf1toc0ufok4o84gi91e0f7gou2fadi1.apps.googleusercontent.com",
           "client_type": 3
         }
