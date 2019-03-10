@@ -67,7 +67,7 @@ public class DetailsOfAnimal extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(c(),"onCancelled",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(),"onCancelled",Toast.LENGTH_SHORT).show();
 
             }
         });
