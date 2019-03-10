@@ -1,5 +1,6 @@
 package com.owayed.kareen.kareentaskmangr2018;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +42,8 @@ public class DetailsOfAnimal extends AppCompatActivity {
         btnRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent(DetailsOfAnimal.this,MyPage.class);
+                startActivity(intent);
 
 
             }

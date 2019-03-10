@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.owayed.kareen.kareentaskmangr2018.taskfragments.MyTasksFragment;
 import com.owayed.kareen.kareentaskmangr2018.taskfragments.ProfileFragment;
 import com.owayed.kareen.kareentaskmangr2018.taskfragments.TasksHistoryFragment;
+import com.owayed.kareen.kareentaskmangr2018.whofragments.WhoRequestFragment;
 
 public class MainTapsActivity extends AppCompatActivity {
 
@@ -131,7 +132,7 @@ catch (Exception e)
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main_taps, container, false);
+            View rootView = inflater.inflate(R.layout.activity_main_taps, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
@@ -144,8 +145,8 @@ catch (Exception e)
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter
     {
-        MyTasksFragment myTasksFragment;
-        TasksHistoryFragment tasksHistoryFragment;
+        WhoRequestFragment whoRequestFragment;
+        HistoryAnimalFragment historyAnimalFragment;
         ProfileFragment profileFragment;
 
 
@@ -158,17 +159,17 @@ catch (Exception e)
         public Fragment getItem(int position) {
             if (position==0)
             {
-                if (myTasksFragment==null) {
-                    myTasksFragment=  new MyTasksFragment();
+                if (whoRequestFragment==null) {
+                    whoRequestFragment=  new WhoRequestFragment();
                 }
-                return myTasksFragment;
+                return whoRequestFragment;
             }
             if (position==1)
             {
-                if (tasksHistoryFragment==null) {
-                    tasksHistoryFragment= new TasksHistoryFragment();
+                if (historyAnimalFragment==null) {
+                    historyAnimalFragment= new HistoryAnimalFragment();
                 }
-                return tasksHistoryFragment;
+                return historyAnimalFragment;
             }
             if (position==2)
             {
@@ -189,7 +190,7 @@ catch (Exception e)
         @Override
         public CharSequence getPageTitle(int position) {
             if (position==0)
-                return "Tasks";
+                return "Animals";
             if (position==1)
                 return "History";
             if (position==2)
