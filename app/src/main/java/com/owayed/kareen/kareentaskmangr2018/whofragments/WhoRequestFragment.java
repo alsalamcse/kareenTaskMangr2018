@@ -76,7 +76,7 @@ public class WhoRequestFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_whorequest_list, container, false);
        if(adapter==null)
-        adapter=new MyWhoRequestRecyclerViewAdapter(animalList,mListener);
+        adapter=new MyWhoRequestRecyclerViewAdapter(readAnimal(),mListener);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -93,7 +93,7 @@ public class WhoRequestFragment extends Fragment {
     }
     private List<Animal>readAnimal()
     {
-        final ArrayList<Animal> myAnimal=new ArrayList<>();
+        animalList=new ArrayList<>();
         //reference to the database root
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
 
@@ -101,10 +101,10 @@ public class WhoRequestFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Toast.makeText(getContext(), "data changed", Toast.LENGTH_SHORT).show();
-                myAnimal.clear();
+                animalList.clear();
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
                     Animal animal = d.getValue(Animal.class);
-                    myAnimal.add(animal);
+                    animalList.add(animal);
 
 
                 }
@@ -117,7 +117,7 @@ public class WhoRequestFragment extends Fragment {
 
             }
         });
-        return myAnimal;
+        return animalList;
     }
 
             @Override
