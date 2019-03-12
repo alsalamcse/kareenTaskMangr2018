@@ -69,8 +69,11 @@ public class HistoryAnimalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_historyanimal_list, container, false);
-        if (adapter==null)
-         adapter=new MyHistoryAnimalRecyclerViewAdapter(animalList,mListener);
+        if (adapter == null) {
+            animalList = new ArrayList<>();
+            adapter = new MyHistoryAnimalRecyclerViewAdapter(animalList, mListener);
+            readAnimal();
+        }
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -86,7 +89,7 @@ public class HistoryAnimalFragment extends Fragment {
         return view;
     }
     private List<Animal>readAnimal() {
-        final ArrayList<Animal> myAnimal = new ArrayList<>();
+
         //reference to the database root
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
@@ -94,11 +97,11 @@ public class HistoryAnimalFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Toast.makeText(getContext(), "data changed", Toast.LENGTH_SHORT).show();
-                myAnimal.clear();
+                animalList.clear();
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
                     Animal animal = d.getValue(Animal.class);
 
-                    myAnimal.add(animal);
+                    animalList.add(animal);
 
 
                 }
@@ -111,7 +114,7 @@ public class HistoryAnimalFragment extends Fragment {
 
             }
         });
-        return myAnimal;
+        return animalList;
     }
             @Override
     public void onAttach(Context context) {

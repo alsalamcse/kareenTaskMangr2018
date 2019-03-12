@@ -45,7 +45,7 @@ private FirebaseAuth auth;
         etPhone=view.findViewById(R.id.etPhone);
         etAge=view.findViewById(R.id.etAge);
         etEmail=view.findViewById(R.id.etEmail);
-        btnSave=view.findViewById(R.id.btnSave);
+        btnSave=view.findViewById(R.id.btnsave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
