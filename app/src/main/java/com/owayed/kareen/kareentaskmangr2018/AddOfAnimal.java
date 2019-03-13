@@ -115,7 +115,7 @@ public class AddOfAnimal extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(AddOfAnimal.this,"add failes",Toast.LENGTH_LONG).show();
+                        Toast.makeText(AddOfAnimal.this,"add failed",Toast.LENGTH_LONG).show();
 
                     }
                 }
