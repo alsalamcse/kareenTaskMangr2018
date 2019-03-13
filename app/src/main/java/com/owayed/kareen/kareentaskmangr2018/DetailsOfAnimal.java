@@ -51,6 +51,8 @@ public class DetailsOfAnimal extends AppCompatActivity {
         Request();
 
     }
+
+
     private void Request()
     {
         auth = FirebaseAuth.getInstance();

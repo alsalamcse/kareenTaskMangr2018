@@ -40,8 +40,7 @@ public class AddOfAnimal extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(AddOfAnimal.this,MainTapsActivity.class);
-                startActivity(i);
+
 
                 dataHandler();
 
@@ -111,6 +110,8 @@ public class AddOfAnimal extends AppCompatActivity {
                     if (task.isSuccessful())
                     {
                         Toast.makeText(AddOfAnimal.this,"add Successful",Toast.LENGTH_LONG).show();
+                        Intent i=new Intent(AddOfAnimal.this,MainTapsActivity.class);
+                        startActivity(i);
                     }
                     else
                     {

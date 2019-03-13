@@ -72,8 +72,8 @@ public class HistoryAnimalFragment extends Fragment {
         if (adapter == null) {
             animalList = new ArrayList<>();
             adapter = new MyHistoryAnimalRecyclerViewAdapter(animalList, mListener);
-            readAnimal();
         }
+        readAnimal();
 
         // Set the adapter
         if (view instanceof RecyclerView) {
