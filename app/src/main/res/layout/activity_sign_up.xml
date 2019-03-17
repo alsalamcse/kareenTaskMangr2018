@@ -32,6 +32,14 @@
             tools:layout_editor_absoluteY="57dp" />
 
         <EditText
+            android:id="@+id/etAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Age"
+            android:inputType="number" />
+
+        <EditText
             android:id="@+id/et3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

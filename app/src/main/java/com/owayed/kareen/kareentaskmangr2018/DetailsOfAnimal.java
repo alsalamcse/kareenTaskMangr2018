@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.MyProfile;
 
 public class DetailsOfAnimal extends AppCompatActivity {
@@ -62,7 +63,7 @@ public class DetailsOfAnimal extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 DataSnapshot d=dataSnapshot.getChildren().iterator().next();
-                MyProfile p=d.getValue(MyProfile.class);
+               Animal p=d.getValue(Animal.class);
                 tvName.setText(p.getName());
                 tvAge.setText(p.getAge());
                 tvColor.setText(p.getColor());

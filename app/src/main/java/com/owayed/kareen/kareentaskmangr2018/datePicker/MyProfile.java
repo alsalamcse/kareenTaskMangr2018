@@ -8,9 +8,7 @@ public class MyProfile {
     private String PhoneNumber;
     private String Email;
     private String Age;
-    private String Color;
-    private String Address;
-    private String Money;
+    private String key;
 
     public String getName() {
         return name;
@@ -54,15 +52,7 @@ public class MyProfile {
                 '}';
     }
 
-    public String getColor() {
-        return Color;
-    }
-
-    public String getMoney() {
-        return Money;
-    }
-
-    public String getAddress() {
-        return Address;
+    public void setKey(String key) {
+        this.key=key;
     }
 }

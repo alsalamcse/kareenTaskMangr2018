@@ -1,6 +1,7 @@
 package com.owayed.kareen.kareentaskmangr2018;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,12 +15,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.MyProfile;
 
 public class SignUpActivity extends AppCompatActivity {
 
     FirebaseAuth auth; //to establish sign in sign up
     FirebaseUser user; // user
-    private EditText et1, et2,et3,et4,et5;
+    private EditText et1,et2,et3,et4,et5,etAge;
     private Button btn1;
 
 
@@ -36,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
         et3 = findViewById(R.id.et3);
         et4 = findViewById(R.id.et4);
         et5 = findViewById(R.id.et5);
+        etAge=findViewById(R.id.etAge);
         btn1 = findViewById(R.id.btn1);
         btn1.setOnClickListener(new View.OnClickListener() {
 
@@ -56,11 +62,31 @@ public class SignUpActivity extends AppCompatActivity {
     private void dataHandler() {
 
         boolean isok = true;
+
         String email = et4.getText().toString();
         String password = et5.getText().toString();
         String fname = et1.getText().toString();
-        String lname = et2.getText().toString();
         String phone = et3.getText().toString();
+        String Age=etAge.getText().toString();
+
+        if (email.length() ==0) {
+            et4.setError("Name can not be empty");
+            isok = false;
+        }
+
+        if (fname.length() ==0) {
+            et1.setError("Type can not be empty");
+            isok = false;
+        }
+        if (phone.length()==0) {
+            et3.setError("Color can not to be empty");
+            isok = false;
+        }
+        if (Age.length()==0) {
+            etAge.setError("Color can not to be empty");
+            isok = false;
+        }
+
         if (email.length() < 4 || email.indexOf('@') < 0 || email.indexOf('.') < 0) {
             et4.setError("Wrong Email");
             isok = false;
@@ -70,8 +96,12 @@ public class SignUpActivity extends AppCompatActivity {
             isok = false;
         }
         if (isok) {
-            creatAcount(email, password);
+
+                creatAcount(email, password);
+
+
         }
+
     }
 
 
@@ -84,6 +114,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(SignUpActivity.this, "Authentication successful", Toast.LENGTH_SHORT).show();
+                    profiledatahandler();
                     finish();
                 } else {
                     Toast.makeText(SignUpActivity.this, "Authenication faild" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -93,6 +124,47 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-}
+
+    private void profiledatahandler() {
+        boolean isok = true;
+        String email = et4.getText().toString();
+        String fname = et1.getText().toString();
+        String phone = et3.getText().toString();
+        String Age=etAge.getText().toString();
+
+        MyProfile myProfile=new MyProfile();
+
+
+            myProfile.setName(fname);
+            myProfile.setEmail(email);
+            myProfile.setPhoneNumber(phone);
+            myProfile.setAge(Age);
+
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        myProfile.setEmail(email);
+
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+        myProfile.setKey(email);
+        reference.child("MyAnimal").child(email).setValue(myProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task)
+            {
+                if (task.isSuccessful())
+                {
+                    Toast.makeText(getBaseContext(),"add Successful",Toast.LENGTH_LONG).show();
+                    Intent i=new Intent(getBaseContext(),MainTapsActivity.class);
+                    startActivity(i);
+                }
+                else
+                {
+                    Toast.makeText(getBaseContext(),"add failed",Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+    }
+
+
+    }
 
 

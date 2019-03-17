@@ -85,7 +85,7 @@ public class AddOfAnimal extends AppCompatActivity {
         }
         if (isok){
 
-            MyTask task=new MyTask();
+
             Animal animal= new Animal();
 
             animal.setType(Type);
@@ -98,12 +98,12 @@ public class AddOfAnimal extends AppCompatActivity {
 
 
             FirebaseAuth auth=FirebaseAuth.getInstance();
-            task.setOwner(auth.getCurrentUser().getEmail());
+            animal.setType(auth.getCurrentUser().getEmail());
 
             DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
             String key=reference.child("MyAnimal").push().getKey();
-            task.setKey(key);
-            reference.child("MyAnimal").child(key).setValue(task).addOnCompleteListener(new OnCompleteListener<Void>() {
+            animal.setMoney(key);
+            reference.child("MyAnimal").child(key).setValue(animal).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task)
                 {

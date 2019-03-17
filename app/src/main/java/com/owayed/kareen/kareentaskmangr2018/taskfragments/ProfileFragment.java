@@ -49,10 +49,11 @@ private FirebaseAuth auth;
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getProfile();
                 Intent intent=new Intent(getActivity(),WhoAskActivity.class);
             }
         });
-        getProfile();
+       // getProfile();
 
         return view;
 
@@ -60,26 +61,34 @@ private FirebaseAuth auth;
     }
 
     private void getProfile() {
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
-        String email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        reference.child("MyProfile").child(email.replace('.','*')).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                DataSnapshot d=dataSnapshot.getChildren().iterator().next();
-                MyProfile p=d.getValue(MyProfile.class);
-                etName.setText(p.getName());
-                etAge.setText(p.getAge());
-                etEmail.setText(p.getEmail());
-                etPhone.setText(p.getPhoneNumber());
-            }
+        if (etName.length() != 0 && etAge.length() != 0 && etPhone.length() != 0) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getContext(),"onCancelled",Toast.LENGTH_SHORT).show();
 
-            }
-        });
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+            String key = reference.child("MyProfile").push().getKey();
+            reference.child("MyProfile").child(key).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // DataSnapshot d=dataSnapshot.getChildren().iterator().next();
+                    MyProfile p = dataSnapshot.getValue(MyProfile.class);
+                    etName.setText(p.getName());
+                    etAge.setText(p.getAge());
+                    etEmail.setText(p.getEmail());
+                    etPhone.setText(p.getPhoneNumber());
+                }
 
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(getContext(), "onCancelled", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }else {
+            etName.setError("Enter Name");
+            etAge.setError("Enter Age");
+            etEmail.setError("Enter Email");
+            etPhone.setError("Enter Phone Number");
+        }
     }
 
 }
