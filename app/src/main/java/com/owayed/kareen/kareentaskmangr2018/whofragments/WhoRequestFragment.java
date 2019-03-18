@@ -91,11 +91,10 @@ public class WhoRequestFragment extends Fragment {
         }
         return view;
     }
-    private List<Animal>readAnimal()
-    {
-        animalList=new ArrayList<>();
+    private List<Animal>readAnimal() {
+        animalList = new ArrayList<>();
         //reference to the database root
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
         reference.child("MyAnimals").addValueEventListener(new ValueEventListener() {
             @Override
@@ -115,10 +114,13 @@ public class WhoRequestFragment extends Fragment {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+
             }
         });
+
         return animalList;
     }
+
 
             @Override
     public void onAttach(Context context) {

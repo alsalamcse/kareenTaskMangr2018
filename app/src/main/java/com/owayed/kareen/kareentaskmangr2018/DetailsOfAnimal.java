@@ -80,4 +80,5 @@ public class DetailsOfAnimal extends AppCompatActivity {
 
 
     }
+
 }
