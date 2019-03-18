@@ -48,8 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent i2 = new Intent(SignUpActivity.this, LogInActivity.class);
-                startActivity(i2);
+
                 dataHandler();
 
 
@@ -115,7 +114,6 @@ public class SignUpActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Toast.makeText(SignUpActivity.this, "Authentication successful", Toast.LENGTH_SHORT).show();
                     profiledatahandler();
-                    finish();
                 } else {
                     Toast.makeText(SignUpActivity.this, "Authenication faild" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     task.getException().printStackTrace();
@@ -145,7 +143,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
         myProfile.setKey(email);
-        reference.child("MyAnimal").child(email).setValue(myProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+        reference.child("MyProfile").child(email.replace('.','*')).setValue(myProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task)
             {

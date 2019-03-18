@@ -66,7 +66,8 @@ private FirebaseAuth auth;
 
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
             String key = reference.child("MyProfile").push().getKey();
-            reference.child("MyProfile").child(key).addValueEventListener(new ValueEventListener() {
+            String email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            reference.child("MyProfile").child(email.replace('.','*')).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // DataSnapshot d=dataSnapshot.getChildren().iterator().next();
