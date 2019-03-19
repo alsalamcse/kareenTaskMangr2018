@@ -34,7 +34,7 @@
             android:name=".MyPage"
             android:label="@string/title_activity_my_page"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ShowAllTasksActivity" />
+        <activity android:name=".ShowAllAnimalsActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".DetailsOfAnimal" />
         <activity android:name=".activity_results"></activity>

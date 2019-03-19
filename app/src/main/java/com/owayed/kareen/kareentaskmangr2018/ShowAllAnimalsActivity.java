@@ -13,18 +13,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.TaskAdopter;
 
-public class ShowAllTasksActivity extends AppCompatActivity {
+public class ShowAllAnimalsActivity extends AppCompatActivity {
     private ListView IvAnimal;
     private TaskAdopter animalAdopter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_all_tasks);
+        setContentView(R.layout.fragment_whorequest);
         IvAnimal=findViewById(R.id.ListAnimal);
         animalAdopter=new TaskAdopter(getBaseContext(),R.layout.taskitim);
         IvAnimal.setAdapter(animalAdopter);
-
 
 
     }
