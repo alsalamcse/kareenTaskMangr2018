@@ -20,10 +20,11 @@ public class ShowAllAnimalsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_whorequest);
+        setContentView(R.layout.activity_show_all_tasks);
         IvAnimal=findViewById(R.id.ListAnimal);
         animalAdopter=new TaskAdopter(getBaseContext(),R.layout.taskitim);
         IvAnimal.setAdapter(animalAdopter);
+        readAnimal();
 
 
     }

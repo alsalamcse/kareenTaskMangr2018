@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.owayed.kareen.kareentaskmangr2018.R;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.TaskAdopter;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
 
@@ -43,8 +44,7 @@ public class WhoRequestFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
-    MyWhoRequestRecyclerViewAdapter adapter;
-    List<Animal>animalList;
+    TaskAdopter adapter;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -74,25 +74,27 @@ public class WhoRequestFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_whorequest_list, container, false);
-       if(adapter==null)
-        adapter=new MyWhoRequestRecyclerViewAdapter(readAnimal(),mListener);
-
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(adapter);
-        }
+        View view = inflater.inflate(R.layout.activity_show_all_tasks, container, false);
+        ListView lstv = view.findViewById(R.id.lstv);
+        if(adapter==null)
+        adapter=new TaskAdopter(getContext(),R.layout.taskitim);
+        lstv.setAdapter(adapter);
+        readAnimal();
+//        // Set the adapter
+//        if (view instanceof RecyclerView) {
+//            Context context = view.getContext();
+//            RecyclerView recyclerView = (RecyclerView) view;
+//            if (mColumnCount <= 1) {
+//                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+//            } else {
+//                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+//            }
+//            recyclerView.setAdapter(adapter);
+//        }
         return view;
     }
-    private List<Animal>readAnimal() {
-        animalList = new ArrayList<>();
+    private void readAnimal() {
+
         //reference to the database root
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
@@ -100,10 +102,10 @@ public class WhoRequestFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Toast.makeText(getContext(), "data changed", Toast.LENGTH_SHORT).show();
-                animalList.clear();
+                adapter.clear();
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
                     Animal animal = d.getValue(Animal.class);
-                    animalList.add(animal);
+                    adapter.add(animal);
 
 
                 }
@@ -118,7 +120,7 @@ public class WhoRequestFragment extends Fragment {
             }
         });
 
-        return animalList;
+
     }
 
 
