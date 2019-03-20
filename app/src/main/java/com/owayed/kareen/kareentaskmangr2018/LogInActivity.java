@@ -51,9 +51,10 @@ public class LogInActivity extends AppCompatActivity {
         btnAdopter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 dataHandler();
+//                Intent i2=new Intent(LogInActivity.this,MyPage.class);
+//                startActivity(i2);
+
             }
         });
         btnowner.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +97,7 @@ public class LogInActivity extends AppCompatActivity {
                 {
                     Toast.makeText(LogInActivity.this, "signIn Successful", Toast.LENGTH_SHORT).show();
                     finish();
-                    Intent intent = new Intent(LogInActivity.this, MainTapsActivity.class);
+                    Intent intent = new Intent(LogInActivity.this, MyPage.class);
                     startActivity(intent);
                 } else
                     {

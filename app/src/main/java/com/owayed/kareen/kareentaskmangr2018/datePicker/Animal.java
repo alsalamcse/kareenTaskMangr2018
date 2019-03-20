@@ -3,6 +3,7 @@ package com.owayed.kareen.kareentaskmangr2018.datePicker;
 import android.media.Image;
 
 public class Animal {
+    private String key;
     private String type;
     private String name;
     private String age;
@@ -20,6 +21,14 @@ public class Animal {
     }
 
     public static void clear() {
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public  void setKey(String key) {
+        this.key=key;
     }
 
     public String getType() {

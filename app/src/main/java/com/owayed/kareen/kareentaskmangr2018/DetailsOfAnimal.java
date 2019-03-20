@@ -71,6 +71,7 @@ public class DetailsOfAnimal extends AppCompatActivity {
                 tvAddress.setText(p.getAddress());
             }
 
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(getBaseContext(),"onCancelled",Toast.LENGTH_SHORT).show();
