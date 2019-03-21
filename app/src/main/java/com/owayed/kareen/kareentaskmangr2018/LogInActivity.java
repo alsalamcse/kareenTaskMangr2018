@@ -21,6 +21,7 @@ public class LogInActivity extends AppCompatActivity {
     private Button btn1, btnAdopter,btnowner;
     private FirebaseAuth auth;
     private FirebaseUser user;
+    private boolean isOwner=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,8 @@ public class LogInActivity extends AppCompatActivity {
         btnAdopter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                isOwner=false;
                 dataHandler();
 //                Intent i2=new Intent(LogInActivity.this,MyPage.class);
 //                startActivity(i2);
@@ -60,8 +63,8 @@ public class LogInActivity extends AppCompatActivity {
         btnowner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(LogInActivity.this,WhoRequestFragment.class);
-                startActivity(i);
+                isOwner=true;
+              dataHandler();
             }
         });
     }
@@ -72,12 +75,11 @@ public class LogInActivity extends AppCompatActivity {
         boolean isok = true;
         String email = et1.getText().toString();
         String passw = et2.getText().toString();
-        signIn(email, passw);
-        if (email.length() < 4 || email.indexOf('@') < 0 || email.indexOf('.') < 0) {
+        if (email== null || email.length() < 4 || email.indexOf('@') < 0 || email.indexOf('.') < 0) {
             et1.setError("Wrong Email");
             isok = false;
         }
-        if (passw.length() < 8) {
+        if (passw==null || passw.length() < 8) {
             et2.setError("wrong password");
             isok = false;
         }
@@ -97,12 +99,20 @@ public class LogInActivity extends AppCompatActivity {
                 {
                     Toast.makeText(LogInActivity.this, "signIn Successful", Toast.LENGTH_SHORT).show();
                     finish();
-                    Intent intent = new Intent(LogInActivity.this, MyPage.class);
-                    startActivity(intent);
-                } else
+                    if (isOwner==false)
                     {
+                        Intent intent = new Intent(LogInActivity.this, MyPage.class);
+                        startActivity(intent);
+
+                } if (isOwner==true){
+
+                        Intent i = new Intent(LogInActivity.this, WhoAskActivity.class);
+                        startActivity(i);
                     Toast.makeText(LogInActivity.this, "LogIn faild" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     task.getException().printStackTrace();
+                 }
+
+
                 }
             }
 

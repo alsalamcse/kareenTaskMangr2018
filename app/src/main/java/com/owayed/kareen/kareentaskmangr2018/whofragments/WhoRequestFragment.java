@@ -3,13 +3,9 @@ package com.owayed.kareen.kareentaskmangr2018.whofragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,13 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.owayed.kareen.kareentaskmangr2018.R;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.TaskAdopter;
-import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent;
-import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.AnimalAdopter;
 
 /**
  * A fragment representing a list of Items.
@@ -44,7 +34,7 @@ public class WhoRequestFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
-    TaskAdopter adapter;
+    AnimalAdopter adapter;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -77,7 +67,7 @@ public class WhoRequestFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_show_all_tasks, container, false);
         ListView lstv = view.findViewById(R.id.lstv);
         if(adapter==null)
-        adapter=new TaskAdopter(getContext(),R.layout.taskitim);
+        adapter=new AnimalAdopter(getContext(),R.layout.animalitem);
         lstv.setAdapter(adapter);
         readAnimal();
 //        // Set the adapter

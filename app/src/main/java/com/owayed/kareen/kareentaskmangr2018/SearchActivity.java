@@ -11,17 +11,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.TaskAdopter;
+import com.owayed.kareen.kareentaskmangr2018.datePicker.AnimalAdopter;
 
 public class SearchActivity extends AppCompatActivity {
     private Button btnSearch;
     private EditText etSearch;
     private ListView LsId;
- TaskAdopter adopter;
+ AnimalAdopter adopter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +28,7 @@ public class SearchActivity extends AppCompatActivity {
         etSearch=findViewById(R.id.etSearch);
         LsId=findViewById(R.id.LsId);
 
-        adopter=new TaskAdopter(getBaseContext(),R.layout.taskitim);
+        adopter=new AnimalAdopter(getBaseContext(),R.layout.animalitem);
         LsId.setAdapter(adopter);
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override

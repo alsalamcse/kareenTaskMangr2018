@@ -20,9 +20,7 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import com.owayed.kareen.kareentaskmangr2018.taskfragments.MyTasksFragment;
-import com.owayed.kareen.kareentaskmangr2018.taskfragments.ProfileFragment;
-import com.owayed.kareen.kareentaskmangr2018.taskfragments.TasksHistoryFragment;
+import com.owayed.kareen.kareentaskmangr2018.animalfragment.ProfileFragment;
 import com.owayed.kareen.kareentaskmangr2018.whofragments.WhoRequestFragment;
 
 public class MainTapsActivity extends AppCompatActivity {

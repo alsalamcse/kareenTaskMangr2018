@@ -88,6 +88,7 @@ public class HistoryAnimalFragment extends Fragment {
         }
         return view;
     }
+
     private List<Animal>readAnimal() {
 
         //reference to the database root

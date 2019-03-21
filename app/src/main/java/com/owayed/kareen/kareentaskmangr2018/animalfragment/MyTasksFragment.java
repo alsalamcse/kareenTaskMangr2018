@@ -1,4 +1,4 @@
-package com.owayed.kareen.kareentaskmangr2018.taskfragments;
+package com.owayed.kareen.kareentaskmangr2018.animalfragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,8 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.owayed.kareen.kareentaskmangr2018.R;
 import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
-import com.owayed.kareen.kareentaskmangr2018.taskfragments.dummy.DummyContent;
-import com.owayed.kareen.kareentaskmangr2018.taskfragments.dummy.DummyContent.DummyItem;
 
 import java.util.ArrayList;
 import java.util.List;

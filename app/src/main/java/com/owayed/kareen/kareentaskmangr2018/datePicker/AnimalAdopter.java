@@ -12,11 +12,11 @@ import android.widget.Toast;
 
 import com.owayed.kareen.kareentaskmangr2018.R;
 
-public class TaskAdopter extends ArrayAdapter<Animal>
+public class AnimalAdopter extends ArrayAdapter<Animal>
 {
 
 
-    public TaskAdopter( Context context, int resource) {
+    public AnimalAdopter(Context context, int resource) {
         super(context, resource);
     }
 
@@ -25,7 +25,7 @@ public class TaskAdopter extends ArrayAdapter<Animal>
     public View getView(int position,  View convertView,  ViewGroup parent) {
 
         if(convertView==null)
-            convertView=LayoutInflater.from(getContext()).inflate(R.layout.taskitim,parent,false);
+            convertView=LayoutInflater.from(getContext()).inflate(R.layout.animalitem,parent,false);
        Animal a=getItem(position);//return data object number " posotion "
 
         TextView etType=convertView.findViewById(R.id.etType);
