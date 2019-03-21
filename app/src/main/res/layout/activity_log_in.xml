@@ -31,7 +31,7 @@
         android:id="@+id/btnAdopter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="sign in adopter"
+        android:text="sign in donor"
         tools:layout_editor_absoluteX="242dp"
         tools:layout_editor_absoluteY="197dp" />
 

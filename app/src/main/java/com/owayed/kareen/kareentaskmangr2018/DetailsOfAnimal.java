@@ -56,30 +56,38 @@ public class DetailsOfAnimal extends AppCompatActivity {
 
     private void Request()
     {
-        auth = FirebaseAuth.getInstance();
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference();
-        String email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        reference.child("Details").child(email.replace('.','*')).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                DataSnapshot d=dataSnapshot.getChildren().iterator().next();
-               Animal p=d.getValue(Animal.class);
-                tvName.setText(p.getName());
-                tvAge.setText(p.getAge());
-                tvColor.setText(p.getColor());
-                tvMoney.setText(p.getMoney());
-                tvAddress.setText(p.getAddress());
-            }
+        if (tvName.length() != 0 && tvAge.length() != 0 && tvColor.length() != 0&& tvMoney.length() != 0&& tvAddress.length() != 0) {
+            auth = FirebaseAuth.getInstance();
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+            String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            reference.child("Details").child(email.replace('.', '*')).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    DataSnapshot d = dataSnapshot.getChildren().iterator().next();
+                    Animal p = d.getValue(Animal.class);
+                    tvName.setText(p.getName());
+                    tvAge.setText(p.getAge());
+                    tvColor.setText(p.getColor());
+                    tvMoney.setText(p.getMoney());
+                    tvAddress.setText(p.getAddress());
+                }
 
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getBaseContext(),"onCancelled",Toast.LENGTH_SHORT).show();
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Toast.makeText(getBaseContext(), "onCancelled", Toast.LENGTH_SHORT).show();
 
-            }
-        });
+                }
+            });
 
-
+        }else {
+            tvName.setError("Enter Name");
+            tvType.setError("Enter Age");
+            tvAge.setError("Enter Email");
+            tvColor.setError("Enter Phone Number");
+            tvAddress.setError("Enter Name");
+            tvMoney.setError("Enter Age");
+        }
     }
 
 }
