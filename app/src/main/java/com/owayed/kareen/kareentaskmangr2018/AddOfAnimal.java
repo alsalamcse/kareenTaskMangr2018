@@ -98,7 +98,7 @@ public class AddOfAnimal extends AppCompatActivity {
 
 
             FirebaseAuth auth=FirebaseAuth.getInstance();
-            animal.setType(auth.getCurrentUser().getEmail());
+            animal.setEmail(auth.getCurrentUser().getEmail());
 
             DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
             String key=reference.child("MyAnimal").push().getKey();

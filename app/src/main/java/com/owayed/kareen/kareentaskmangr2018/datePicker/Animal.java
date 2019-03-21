@@ -9,8 +9,18 @@ public class Animal {
     private String age;
     private String Color;
     private String address;
+    private String email;
     private String money;
     private Image picture;
+    private String PhoneNumber;
+
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
+    }
 
     public Animal()
     {
@@ -37,6 +47,14 @@ public class Animal {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName(){return name;}

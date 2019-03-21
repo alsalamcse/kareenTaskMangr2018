@@ -36,29 +36,60 @@ public class SearchActivity extends AppCompatActivity {
 
         adopter=new AnimalAdopter(getBaseContext(),R.layout.animalitem);
         LsId.setAdapter(adopter);
-
+        getAll();
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String st=etSearch.getText().toString();
+                if(st!=null && st.length()>0)
                 searchAnimal(st);
+                else
+                    getAll();
             }
         });
 
     }
 
-    private void searchAnimal(String st)
+    private void searchAnimal(final String st)
     {
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-        reference.child("MyAnimal").orderByChild("type").equalTo(st).addValueEventListener(new ValueEventListener() {
+       // reference.child("MyAnimal").orderByChild("type").equalTo(st).addValueEventListener(new ValueEventListener() {
+        reference.child("MyAnimal").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
                 adopter.clear();
                 for (DataSnapshot d: dataSnapshot.getChildren())
                 {
+
                     Animal task=d.getValue(Animal.class);
+                    if(task.getType().equals(st))
                    adopter.add(task);
+                }
+                adopter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    private void getAll()
+    {
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+        reference.child("MyAnimal").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                adopter.clear();
+                for (DataSnapshot d: dataSnapshot.getChildren())
+                {
+
+                    Animal task=d.getValue(Animal.class);
+
+                        adopter.add(task);
                 }
                 adopter.notifyDataSetChanged();
 
