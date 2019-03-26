@@ -35,8 +35,7 @@ public class AnimalAdopter extends ArrayAdapter<Animal>
 
         TextView etType=convertView.findViewById(R.id.etType);
         TextView etName=convertView.findViewById(R.id.etName);
-        TextView etPhoneNumber=convertView.findViewById(R.id.etName);
-
+        TextView etPhoneNumber=convertView.findViewById(R.id.etPhone);
         TextView etAge=convertView.findViewById(R.id.etAge);
         TextView etColor=convertView.findViewById(R.id.etColor);
         TextView etMoney=convertView.findViewById(R.id.etMoney);
@@ -53,12 +52,13 @@ public class AnimalAdopter extends ArrayAdapter<Animal>
         etColor.setText(a.getColor());
         etMoney.setText(a.getMoney());
         etAddress.setText(a.getAddress());
+
         btnIWant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Del",Toast.LENGTH_SHORT).show();
                 SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage(a.getEmail(), null, "i want...", null, null);
+                smsManager.sendTextMessage(a.getEmail(), null, "i want to adoupt your animal", null, null);
             }
         });
 
