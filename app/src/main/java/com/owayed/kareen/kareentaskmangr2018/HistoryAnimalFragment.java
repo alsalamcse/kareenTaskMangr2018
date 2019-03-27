@@ -1,7 +1,9 @@
 package com.owayed.kareen.kareentaskmangr2018;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.Browser;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebHistoryItem;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +23,9 @@ import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +93,125 @@ public class HistoryAnimalFragment extends Fragment {
             recyclerView.setAdapter(adapter);
         }
         return view;
+    }
+    public static class browser
+    {
+        private boolean browsing;
+        private WebHistoryItem currentVisit;
+
+        public static void main(String[]args)
+        {
+            Browser b = new Browser();
+            b.run();
+        }
+        public browser() {
+            browsing = true;
+            currentVisit = null;
+            System.out.println("Welcome to FCS Browser v0.01");
+        }
+        public void run() {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            while (browsing) {
+                try {
+                    promptUser();
+                    String cmd = br.readLine();
+                    interpretAndExecute(cmd);
+                } catch (IOException e) {
+                    System.out.println("Oops! There was an error reading your command.");
+                }
+            }
+        }
+        private void promptUser() {
+            System.out.println("\nBrowser ready.\n(Commands: visit *web url*; history; back; quit; forward ;)");
+        }
+        private void interpretAndExecute(String cmd) {
+            String[] commands = cmd.split(" ");
+            if (cmd.equals("back")) {
+                goBack();
+            } else if (cmd.equals("history")) {
+                viewHistory();
+            } else if (commands[0].equals("visit")) {
+                visitPage(commands[1]);
+            } else if (cmd.equals("quit")) {
+                quit();
+            } else if (cmd.equals("forward")){
+                goForward();
+
+            } else {
+                System.out.println("Command not recognized");
+            }
+        }
+        private void visitPage(String url) {
+            System.out.println("Now going to visit "+url);
+            WebHistoryItem wv = new WebHistoryItem(url, currentVisit, null) {
+                @Override
+                public String getUrl() {
+                    return null;
+                }
+
+                @Override
+                public String getOriginalUrl() {
+                    return null;
+                }
+
+                @Override
+                public String getTitle() {
+                    return null;
+                }
+
+                @androidx.annotation.Nullable
+                @Override
+                public Bitmap getFavicon() {
+                    return null;
+                }
+
+                @Override
+                protected WebHistoryItem clone() {
+                    return null;
+                }
+            };
+            if (currentVisit != null) {
+                currentVisit.setNextNode(wv);
+            }
+            currentVisit = wv;
+            System.out.println(currentVisit);
+        }
+        private void goBack() {
+            if (currentVisit != null) {
+                System.out.println("Going back...");
+                currentVisit = currentVisit.getPreviousNode();
+                if (currentVisit != null) {
+                    System.out.println(currentVisit);
+                }
+            } else {
+                System.out.println("No web visits in browser history");
+            }
+        }private void goForward() {
+        if (currentVisit != null) {
+            System.out.print("Going forward...");
+            currentVisit = currentVisit.getNextNode();
+            if (currentVisit != null) {
+                System.out.println(currentVisit);
+            } else {
+                System.out.println("No next page to show.");
+            }
+        }
+    }
+        private void viewHistory() {
+            System.out.println("Showing browser history...");
+            WebHistoryItem tmp = currentVisit;
+            int counter = 0;
+            while (tmp != null) {
+                System.out.println("\t~"+tmp);
+                tmp = tmp.getPreviousNode();
+                counter++;
+            }
+            System.out.println("\t\t"+counter+" total");
+        }
+        private void quit() {
+            System.out.println("Quitting now...");
+            browsing = false;
+        }
     }
 
     private List<Animal>readAnimal() {
