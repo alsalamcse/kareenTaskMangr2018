@@ -20,6 +20,9 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import com.owayed.kareen.kareentaskmangr2018.animalfragment.ProfileFragment;
+import com.owayed.kareen.kareentaskmangr2018.whofragments.WhoRequestFragment;
+
 public class MyPage extends AppCompatActivity {
 
     /**
@@ -41,33 +44,37 @@ public class MyPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
+        try {
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            // Create the adapter that will return a fragment for each of the three
+            // primary sections of the activity.
+            mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+            // Set up the ViewPager with the sections adapter.
+            mViewPager = (ViewPager) findViewById(R.id.container);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+            TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+            mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+            tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                Intent i=new Intent(MyPage.this,SearchActivity.class);
-                startActivity(i);
-            }
-        });
+            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    Intent i = new Intent(MyPage.this, SearchActivity.class);
+                    startActivity(i);
+                }
+            });
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -133,6 +140,9 @@ public class MyPage extends AppCompatActivity {
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        WhoRequestFragment whoRequestFragment;
+        HistoryAnimalFragment historyAnimalFragment;
+        ProfileFragment profileFragment;
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -140,15 +150,49 @@ public class MyPage extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            if (position == 0) {
+                if (whoRequestFragment == null) {
+                    whoRequestFragment = new WhoRequestFragment();
+                }
+                return whoRequestFragment;
+            }
+            if (position == 1) {
+                if (historyAnimalFragment == null) {
+                    historyAnimalFragment = new HistoryAnimalFragment();
+                }
+                return historyAnimalFragment;
+            }
+            if (position == 2) {
+                if (profileFragment == null) {
+                    profileFragment = new ProfileFragment();
+                }
+                return profileFragment;
+            }
+            return MainTapsActivity.PlaceholderFragment.newInstance(position + 1);
         }
+        // getItem is called to instantiate the fragment for the given page.
+        // Return a PlaceholderFragment (defined as a static inner class below).
+
 
         @Override
         public int getCount() {
             // Show 3 total pages.
             return 3;
         }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            if (position == 0)
+                return "Animals";
+            if (position == 1)
+                return "History";
+            if (position == 2)
+                return "Profile";
+            return "noName";
+        }
     }
 }
+
+
+
+

@@ -88,9 +88,8 @@ public class WhoRequestFragment extends Fragment {
         //reference to the database root
         Animal animal=new Animal();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        String key = reference.child("My animals").push().getKey();
-        animal.setKey(key);
-        reference.child("MyAnimals").addValueEventListener(new ValueEventListener() {
+
+        reference.child("MyAnimal").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Toast.makeText(getContext(), "data changed", Toast.LENGTH_SHORT).show();

@@ -99,15 +99,27 @@
         app:layout_constraintTop_toBottomOf="@+id/etMoney" />
 
     <Button
-        android:id="@+id/btnIWant"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
-        android:layout_marginEnd="17dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="77dp"
         android:text="to adoupt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/etAddress" />
+        app:layout_constraintTop_toTopOf="@+id/etAddress"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/etPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="phone number"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddress" />
 
 </android.support.constraint.ConstraintLayout>

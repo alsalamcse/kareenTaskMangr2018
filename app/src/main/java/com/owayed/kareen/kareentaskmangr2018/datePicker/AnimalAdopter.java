@@ -1,6 +1,7 @@
 package com.owayed.kareen.kareentaskmangr2018.datePicker;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
@@ -57,8 +58,10 @@ public class AnimalAdopter extends ArrayAdapter<Animal>
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Del",Toast.LENGTH_SHORT).show();
-                SmsManager smsManager = SmsManager.getDefault();
-                smsManager.sendTextMessage(a.getEmail(), null, "i want to adoupt your animal", null, null);
+                sendSMSMessage(a.getPhoneNumber(),"i want to adoupt your animal");
+
+//                SmsManager smsManager = SmsManager.getDefault();
+//                smsManager.sendTextMessage(a.getEmail(), null, "i want to adoupt your animal", null, null);
             }
         });
 
@@ -66,6 +69,44 @@ public class AnimalAdopter extends ArrayAdapter<Animal>
     }
 
 
+
+    protected void sendSMSMessage(String phoneNumber, String s) {
+
+
+        if (ContextCompat.checkSelfPermission(getContext(),
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) getContext(),
+                    Manifest.permission.SEND_SMS)) {
+                SmsManager smsManager = SmsManager.getDefault();
+                smsManager.sendTextMessage(phoneNumber, null, s, null, null);
+            } else {
+                ActivityCompat.requestPermissions((Activity) getContext(),
+                        new String[]{Manifest.permission.SEND_SMS},
+                        100);
+            }
+        }
+    }
+
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+//        switch (requestCode) {
+//            case 100: {
+//                if (grantResults.length > 0
+//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    SmsManager smsManager = SmsManager.getDefault();
+//                    smsManager.sendTextMessage(phoneNo, null, message, null, null);
+//                    Toast.makeText(getApplicationContext(), "SMS sent.",
+//                            Toast.LENGTH_LONG).show();
+//                } else {
+//                    Toast.makeText(getApplicationContext(),
+//                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+//                    return;
+//                }
+//            }
+//        }
+//
+//    }
 
 
 
