@@ -63,8 +63,10 @@ public class SearchActivity extends AppCompatActivity {
                 {
 
                     Animal task=d.getValue(Animal.class);
+                    if (task.getType() != null){
                     if(task.getType().equals(st))
                    adopter.add(task);
+                    }
                 }
                 adopter.notifyDataSetChanged();
 
