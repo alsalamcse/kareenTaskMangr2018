@@ -25,48 +25,47 @@ public class SearchActivity extends AppCompatActivity {
     private ListView LsId;
     private ArrayAdapter arrayAdapter;
     private ArrayList arrayList;
- AnimalAdopter adopter;
+    AnimalAdopter adopter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        btnSearch=findViewById(R.id.btnSearch);
-        etSearch=findViewById(R.id.etSearch);
-        LsId=(ListView)findViewById(R.id.LsId);
+        btnSearch = findViewById(R.id.btnSearch);
+        etSearch = findViewById(R.id.etSearch);
+        LsId = (ListView) findViewById(R.id.LsId);
 
-        adopter=new AnimalAdopter(getBaseContext(),R.layout.animalitem);
+        adopter = new AnimalAdopter(getBaseContext(), R.layout.animalitem);
         LsId.setAdapter(adopter);
         getAll();
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String st=etSearch.getText().toString();
-                if(st!=null && st.length()>0)
-                searchAnimal(st);
+                String st = etSearch.getText().toString();
+                if (st != null && st.length() > 0)
+                    searchAnimal(st);
                 else
-                    getAll();
+                    etSearch.setError("Enter type");
+//                    getAll();
             }
         });
 
     }
 
-    private void searchAnimal(final String st)
-    {
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-       // reference.child("MyAnimal").orderByChild("type").equalTo(st).addValueEventListener(new ValueEventListener() {
-        reference.child("MyAnimal").addValueEventListener(new ValueEventListener() {
+    private void searchAnimal(final String st) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        // reference.child("MyAnimal").orderByChild("type").equalTo(st).addValueEventListener(new ValueEventListener() {
+        reference.child("MyAnimal").orderByChild("type").equalTo(st).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 adopter.clear();
-                for (DataSnapshot d: dataSnapshot.getChildren())
-                {
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
 
-                    Animal task=d.getValue(Animal.class);
-                    if (task.getType() != null){
-                    if(task.getType().equals(st))
-                   adopter.add(task);
-                    }
+                    Animal task = d.getValue(Animal.class);
+//                    if (task.getType() != null) {
+//                        if (task.getType().equals(st))
+                            adopter.add(task);
+//                    }
                 }
                 adopter.notifyDataSetChanged();
 
@@ -78,20 +77,18 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
-    private void getAll()
-    {
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+
+    private void getAll() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         reference.child("MyAnimal").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 adopter.clear();
-                for (DataSnapshot d: dataSnapshot.getChildren())
-                {
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
 
-                    Animal task=d.getValue(Animal.class);
+                    Animal task = d.getValue(Animal.class);
 
-                        adopter.add(task);
+                    adopter.add(task);
                 }
                 adopter.notifyDataSetChanged();
 

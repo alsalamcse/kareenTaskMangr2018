@@ -6,6 +6,7 @@ public class Animal {
     private String key;
     private String type;
     private String name;
+    private String uid;
     private String age;
     private String Color;
     private String address;
@@ -20,6 +21,14 @@ public class Animal {
 
     public void setPhoneNumber(String phoneNumber) {
         PhoneNumber = phoneNumber;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public Animal()

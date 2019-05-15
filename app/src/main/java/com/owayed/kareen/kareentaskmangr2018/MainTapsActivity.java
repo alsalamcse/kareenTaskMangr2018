@@ -162,14 +162,14 @@ catch (Exception e)
                 }
                 return whoRequestFragment;
             }
+//            if (position==1)
+//            {
+//                if (historyAnimalFragment==null) {
+//                    historyAnimalFragment= new HistoryAnimalFragment();
+//                }
+//                return historyAnimalFragment;
+//            }
             if (position==1)
-            {
-                if (historyAnimalFragment==null) {
-                    historyAnimalFragment= new HistoryAnimalFragment();
-                }
-                return historyAnimalFragment;
-            }
-            if (position==2)
             {
                 if (profileFragment==null) {
                     profileFragment= new ProfileFragment();
@@ -181,8 +181,8 @@ catch (Exception e)
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            // Show 2 total pages.
+            return 2;
         }
 
         @Override
