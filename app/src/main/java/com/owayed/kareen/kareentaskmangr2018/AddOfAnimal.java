@@ -98,30 +98,30 @@ public class AddOfAnimal extends AppCompatActivity {
 
 
             FirebaseAuth auth=FirebaseAuth.getInstance();
-            animal.setEmail(auth.getCurrentUser().getEmail());
-            animal.setUid(auth.getUid());
+        animal.setEmail(auth.getCurrentUser().getEmail());
+        animal.setUid(auth.getUid());
 
-            DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-            String key=reference.child("MyAnimal").push().getKey();
-            animal.setMoney(key);
-            reference.child("MyAnimal").child(key).setValue(animal).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task)
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+        String key=reference.child("MyAnimal").push().getKey();
+        animal.setKey(key);
+        reference.child("MyAnimal").child(key).setValue(animal).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task)
+            {
+                if (task.isSuccessful())
                 {
-                    if (task.isSuccessful())
-                    {
-                        Toast.makeText(AddOfAnimal.this,"add Successful",Toast.LENGTH_LONG).show();
-                        Intent i=new Intent(AddOfAnimal.this,MainTapsActivity.class);
-                        startActivity(i);
-                    }
-                    else
-                    {
-                        Toast.makeText(AddOfAnimal.this,"add failed",Toast.LENGTH_LONG).show();
-
-                    }
+                    Toast.makeText(AddOfAnimal.this,"add Successful",Toast.LENGTH_LONG).show();
+                    Intent i=new Intent(AddOfAnimal.this,MainTapsActivity.class);
+                    startActivity(i);
                 }
-            });
-        }
+                else
+                {
+                    Toast.makeText(AddOfAnimal.this,"add failed",Toast.LENGTH_LONG).show();
+
+                }
+            }
+        });
+    }
 
 
         }

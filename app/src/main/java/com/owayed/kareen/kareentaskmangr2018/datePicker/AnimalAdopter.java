@@ -3,7 +3,9 @@ package com.owayed.kareen.kareentaskmangr2018.datePicker;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.telephony.SmsManager;
@@ -16,7 +18,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.owayed.kareen.kareentaskmangr2018.AddOfAnimal;
+import com.owayed.kareen.kareentaskmangr2018.MainTapsActivity;
+import com.owayed.kareen.kareentaskmangr2018.MyPage;
 import com.owayed.kareen.kareentaskmangr2018.R;
+import com.owayed.kareen.kareentaskmangr2018.SearchActivity;
 
 public class AnimalAdopter extends ArrayAdapter<Animal>
 {
@@ -58,6 +69,26 @@ public class AnimalAdopter extends ArrayAdapter<Animal>
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Del",Toast.LENGTH_SHORT).show();
+
+                FirebaseAuth auth=FirebaseAuth.getInstance();
+                DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+
+                reference.child(auth.getUid()).child("MyAnimal").child(a.getKey()).setValue(a).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task)
+                    {
+                        if (task.isSuccessful())
+                        {
+                            Toast.makeText(getContext(),"add Successful",Toast.LENGTH_LONG).show();
+                            Intent i=new Intent(getContext(),MainTapsActivity.class);
+                            ((SearchActivity)getContext()).finish();
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                });
                 sendSMSMessage(a.getPhoneNumber(),"i want to adoupt your animal");
 
 //                SmsManager smsManager = SmsManager.getDefault();

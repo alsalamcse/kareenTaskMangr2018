@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -88,11 +89,12 @@ public class WhoRequestFragment extends Fragment {
         //reference to the database root
         Animal animal=new Animal();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        FirebaseAuth auth=FirebaseAuth.getInstance();
 
-        reference.child("MyAnimal").addValueEventListener(new ValueEventListener() {
+        reference.child(auth.getUid()).child("MyAnimal").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Toast.makeText(getContext(), "data changed", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), "data changed", Toast.LENGTH_SHORT).show();
                 adapter.clear();
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
                     Animal animal = d.getValue(Animal.class);
