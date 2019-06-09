@@ -6,7 +6,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,8 +14,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.AnimalAdopter;
+import com.owayed.kareen.kareentaskmangr2018.data.Animal;
+import com.owayed.kareen.kareentaskmangr2018.data.AnimalAdopter;
 
 public class ShowAllAnimalsActivity extends AppCompatActivity {
     private ListView IvAnimal;

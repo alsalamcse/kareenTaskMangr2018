@@ -1,4 +1,4 @@
-package com.owayed.kareen.kareentaskmangr2018.datePicker;
+package com.owayed.kareen.kareentaskmangr2018.data;
 
 import android.Manifest;
 import android.app.Activity;
@@ -23,17 +23,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.owayed.kareen.kareentaskmangr2018.AddOfAnimal;
 import com.owayed.kareen.kareentaskmangr2018.MainTapsActivity;
-import com.owayed.kareen.kareentaskmangr2018.MyPage;
 import com.owayed.kareen.kareentaskmangr2018.R;
-import com.owayed.kareen.kareentaskmangr2018.SearchActivity;
 
-public class AnimalAdopter extends ArrayAdapter<Animal>
+public class AnimalAdopterJustName extends ArrayAdapter<Animal>
 {
 
 
-    public AnimalAdopter(Context context, int resource) {
+    public AnimalAdopterJustName(Context context, int resource) {
         super(context, resource);
     }
 
@@ -45,26 +42,19 @@ public class AnimalAdopter extends ArrayAdapter<Animal>
             convertView=LayoutInflater.from(getContext()).inflate(R.layout.animalitem,parent,false);
        final Animal a=getItem(position);//return data object number " posotion "
 
-        TextView etType=convertView.findViewById(R.id.etType);
-        TextView etName=convertView.findViewById(R.id.etName);
-        TextView etPhoneNumber=convertView.findViewById(R.id.etPhone);
-        TextView etAge=convertView.findViewById(R.id.etAge);
-        TextView etColor=convertView.findViewById(R.id.etColor);
-        TextView etMoney=convertView.findViewById(R.id.etMoney);
-        TextView etAddress=convertView.findViewById(R.id.etAddress);
 
-        ImageButton ibPicture=convertView.findViewById(R.id.ibPicture);
+        TextView etName=convertView.findViewById(R.id.etName);
+
         Button btnIWant=convertView.findViewById(R.id.btnSave);
 
         // put the data of the object on the view
-        etPhoneNumber.setText(a.getPhoneNumber());
-        etName.setText(a.getName());
-        etType.setText(a.getType());
-        etAge.setText(a.getAge());
-        etColor.setText(a.getColor());
-        etMoney.setText(a.getMoney());
-        etAddress.setText(a.getAddress());
 
+        etName.setText(a.getName());
+
+
+        if (a.getWhoWant()!=null && a.getWhoWant().length()>0)
+            btnIWant.setEnabled(false);
+        else
         btnIWant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,8 +62,26 @@ public class AnimalAdopter extends ArrayAdapter<Animal>
 
                 FirebaseAuth auth=FirebaseAuth.getInstance();
                 DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+                a.setWhoWant(auth.getCurrentUser().getUid());
+                reference.child("MyAnimal").child(a.getKey()).setValue(a).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful())
+                        {
+                            Toast.makeText(getContext(),"Want Successful",Toast.LENGTH_LONG).show();
+                            Intent i=new Intent(getContext(),MainTapsActivity.class);
 
-                reference.child(auth.getUid()).child("MyAnimal").child(a.getKey()).setValue(a).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            ((Activity)getContext()).finish();
+                        }
+                        else
+                        {
+                            Toast.makeText(getContext(),"Want Faild",Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                });
+
+                reference.child(auth.getUid()).child("IWantAnimal").child(a.getKey()).setValue(a).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task)
                     {
@@ -81,10 +89,12 @@ public class AnimalAdopter extends ArrayAdapter<Animal>
                         {
                             Toast.makeText(getContext(),"add Successful",Toast.LENGTH_LONG).show();
                             Intent i=new Intent(getContext(),MainTapsActivity.class);
-                            ((SearchActivity)getContext()).finish();
+
+                            ((Activity)getContext()).finish();
                         }
                         else
                         {
+                            Toast.makeText(getContext(),"add fiald",Toast.LENGTH_LONG).show();
 
                         }
                     }

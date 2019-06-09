@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,8 +15,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.MyProfile;
+import com.owayed.kareen.kareentaskmangr2018.data.Animal;
 
 public class DetailsOfAnimal extends AppCompatActivity {
     private TextView tvName,tvType,tvAge,tvColor,tvMoney,tvAddress;

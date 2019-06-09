@@ -1,4 +1,4 @@
-package com.owayed.kareen.kareentaskmangr2018.whofragments;
+package com.owayed.kareen.kareentaskmangr2018.MyPageFragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -16,8 +15,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.owayed.kareen.kareentaskmangr2018.R;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.AnimalAdopter;
+import com.owayed.kareen.kareentaskmangr2018.data.Animal;
+import com.owayed.kareen.kareentaskmangr2018.data.AnimalAdopter;
 
 /**
  * A fragment representing a list of Items.
@@ -91,7 +90,7 @@ public class WhoRequestFragment extends Fragment {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         FirebaseAuth auth=FirebaseAuth.getInstance();
 
-        reference.child(auth.getUid()).child("MyAnimal").addValueEventListener(new ValueEventListener() {
+        reference.child(auth.getUid()).child("IWantAnimal").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                // Toast.makeText(getContext(), "data changed", Toast.LENGTH_SHORT).show();

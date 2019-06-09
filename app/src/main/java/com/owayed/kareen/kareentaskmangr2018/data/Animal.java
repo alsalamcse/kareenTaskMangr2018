@@ -1,4 +1,4 @@
-package com.owayed.kareen.kareentaskmangr2018.datePicker;
+package com.owayed.kareen.kareentaskmangr2018.data;
 
 import android.media.Image;
 
@@ -14,6 +14,7 @@ public class Animal {
     private String money;
     private Image picture;
     private String PhoneNumber;
+    private String WhoWant;
 
     public String getPhoneNumber() {
         return PhoneNumber;
@@ -40,6 +41,14 @@ public class Animal {
     }
 
     public static void clear() {
+    }
+
+    public String getWhoWant() {
+        return WhoWant;
+    }
+
+    public void setWhoWant(String whoWant) {
+        WhoWant = whoWant;
     }
 
     public String getKey() {

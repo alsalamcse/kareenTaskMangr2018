@@ -1,4 +1,4 @@
-package com.owayed.kareen.kareentaskmangr2018;
+package com.owayed.kareen.kareentaskmangr2018.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,38 +6,39 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
+import com.owayed.kareen.kareentaskmangr2018.R;
+import com.owayed.kareen.kareentaskmangr2018.MyPageFragments.NewAnimalsToAdouptFragment.OnListFragmentInteractionListener;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link Animal} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyHistoryAnimalRecyclerViewAdapter extends RecyclerView.Adapter<MyHistoryAnimalRecyclerViewAdapter.ViewHolder> {
+public class MyNewAnimalsToAdouptRecyclerViewAdapter extends RecyclerView.Adapter<MyNewAnimalsToAdouptRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Animal> mValues;
-    private final HistoryAnimalFragment.OnListFragmentInteractionListener mListener;
+    private final List<DummyItem> mValues;
+    private final OnListFragmentInteractionListener mListener;
 
-    public MyHistoryAnimalRecyclerViewAdapter(List<Animal> animals, HistoryAnimalFragment.OnListFragmentInteractionListener listener) {
-        mValues = animals;
+    public MyNewAnimalsToAdouptRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+        mValues = items;
         mListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_historyanimal, parent, false);
+                .inflate(R.layout.fragment_newanimalstoadoupt, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).getName());
-        holder.mContentView.setText(mValues.get(position).getName());
+        holder.mIdView.setText(mValues.get(position).id);
+        holder.mContentView.setText(mValues.get(position).content);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +61,7 @@ public class MyHistoryAnimalRecyclerViewAdapter extends RecyclerView.Adapter<MyH
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public Animal mItem;
+        public DummyItem mItem;
 
         public ViewHolder(View view) {
             super(view);
@@ -73,9 +74,5 @@ public class MyHistoryAnimalRecyclerViewAdapter extends RecyclerView.Adapter<MyH
         public String toString() {
             return super.toString() + " '" + mContentView.getText() + "'";
         }
-    }
-    public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(Animal item);
     }
 }

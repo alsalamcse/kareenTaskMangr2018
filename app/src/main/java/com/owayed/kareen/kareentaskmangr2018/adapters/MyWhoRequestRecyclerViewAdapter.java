@@ -1,4 +1,4 @@
-package com.owayed.kareen.kareentaskmangr2018.whofragments;
+package com.owayed.kareen.kareentaskmangr2018.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,9 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.owayed.kareen.kareentaskmangr2018.R;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
-import com.owayed.kareen.kareentaskmangr2018.whofragments.WhoRequestFragment.OnListFragmentInteractionListener;
-import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
+import com.owayed.kareen.kareentaskmangr2018.data.Animal;
+import com.owayed.kareen.kareentaskmangr2018.MyPageFragments.WhoRequestFragment.OnListFragmentInteractionListener;
 
 import java.util.List;
 

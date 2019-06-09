@@ -1,4 +1,4 @@
-package com.owayed.kareen.kareentaskmangr2018.animalfragment.dummy;
+package com.owayed.kareen.kareentaskmangr2018.ownerfragments.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

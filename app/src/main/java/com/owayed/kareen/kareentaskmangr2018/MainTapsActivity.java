@@ -20,8 +20,9 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import com.owayed.kareen.kareentaskmangr2018.animalfragment.ProfileFragment;
-import com.owayed.kareen.kareentaskmangr2018.whofragments.WhoRequestFragment;
+import com.owayed.kareen.kareentaskmangr2018.ownerfragments.ProfileFragment;
+import com.owayed.kareen.kareentaskmangr2018.MyPageFragments.HistoryAnimalFragment;
+import com.owayed.kareen.kareentaskmangr2018.MyPageFragments.WhoRequestFragment;
 
 public class MainTapsActivity extends AppCompatActivity {
 

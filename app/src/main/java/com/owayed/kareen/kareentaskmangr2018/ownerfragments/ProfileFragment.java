@@ -1,4 +1,4 @@
-package com.owayed.kareen.kareentaskmangr2018.animalfragment;
+package com.owayed.kareen.kareentaskmangr2018.ownerfragments;
 
 
 import android.content.Intent;
@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.owayed.kareen.kareentaskmangr2018.R;
 import com.owayed.kareen.kareentaskmangr2018.WhoAskActivity;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.MyProfile;
+import com.owayed.kareen.kareentaskmangr2018.data.MyProfile;
 
 /**
  * A simple {@link Fragment} subclass.

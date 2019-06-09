@@ -1,6 +1,5 @@
 package com.owayed.kareen.kareentaskmangr2018;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,8 +13,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.AnimalAdopter;
+import com.owayed.kareen.kareentaskmangr2018.data.Animal;
+import com.owayed.kareen.kareentaskmangr2018.data.AnimalAdopter;
 
 import java.util.ArrayList;
 

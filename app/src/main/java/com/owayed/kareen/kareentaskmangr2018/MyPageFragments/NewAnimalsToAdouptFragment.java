@@ -1,4 +1,4 @@
-package com.owayed.kareen.kareentaskmangr2018;
+package com.owayed.kareen.kareentaskmangr2018.MyPageFragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.owayed.kareen.kareentaskmangr2018.adapters.MyNewAnimalsToAdouptRecyclerViewAdapter;
+import com.owayed.kareen.kareentaskmangr2018.R;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent;
 import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
-
-import java.util.List;
 
 /**
  * A fragment representing a list of Items.

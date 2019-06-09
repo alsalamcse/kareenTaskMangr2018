@@ -15,8 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.MyTask;
+import com.owayed.kareen.kareentaskmangr2018.data.Animal;
 
 public class AddOfAnimal extends AppCompatActivity {
     private EditText etType,etAge,etColor,etMoney,etAddress,etName;
@@ -94,6 +93,7 @@ public class AddOfAnimal extends AppCompatActivity {
             animal.setAge(Age);
             animal.setName(Name);
             animal.setMoney(Money);
+            animal.setWhoWant("");
 
 
 

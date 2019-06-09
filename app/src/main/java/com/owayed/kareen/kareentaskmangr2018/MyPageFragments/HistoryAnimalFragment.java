@@ -1,9 +1,7 @@
-package com.owayed.kareen.kareentaskmangr2018;
+package com.owayed.kareen.kareentaskmangr2018.MyPageFragments;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.Browser;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebHistoryItem;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,13 +16,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.owayed.kareen.kareentaskmangr2018.datePicker.Animal;
-import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent;
-import com.owayed.kareen.kareentaskmangr2018.dummy.DummyContent.DummyItem;
+import com.owayed.kareen.kareentaskmangr2018.adapters.MyHistoryAnimalRecyclerViewAdapter;
+import com.owayed.kareen.kareentaskmangr2018.R;
+import com.owayed.kareen.kareentaskmangr2018.data.Animal;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
