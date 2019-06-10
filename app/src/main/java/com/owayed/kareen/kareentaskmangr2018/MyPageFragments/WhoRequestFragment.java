@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.owayed.kareen.kareentaskmangr2018.R;
 import com.owayed.kareen.kareentaskmangr2018.data.Animal;
 import com.owayed.kareen.kareentaskmangr2018.data.AnimalAdopter;
+import com.owayed.kareen.kareentaskmangr2018.data.AnimalAdopterJustName;
 
 /**
  * A fragment representing a list of Items.
@@ -34,7 +35,7 @@ public class WhoRequestFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
-    AnimalAdopter adapter;
+    AnimalAdopterJustName adapter;
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -67,7 +68,7 @@ public class WhoRequestFragment extends Fragment {
         View view = inflater.inflate(R.layout.activity_show_all_tasks, container, false);
         ListView lstv = view.findViewById(R.id.lstv);
         if(adapter==null)
-        adapter=new AnimalAdopter(getContext(),R.layout.animalitem);
+        adapter=new AnimalAdopterJustName(getContext(),R.layout.animalitemname);
         lstv.setAdapter(adapter);
         readAnimal();
 //        // Set the adapter

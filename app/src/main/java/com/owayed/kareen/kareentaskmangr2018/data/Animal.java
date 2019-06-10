@@ -2,7 +2,9 @@ package com.owayed.kareen.kareentaskmangr2018.data;
 
 import android.media.Image;
 
-public class Animal {
+import java.io.Serializable;
+
+public class Animal implements Serializable {
     private String key;
     private String type;
     private String name;

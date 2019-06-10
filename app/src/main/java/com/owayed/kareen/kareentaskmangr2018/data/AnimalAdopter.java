@@ -25,7 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.owayed.kareen.kareentaskmangr2018.MainTapsActivity;
 import com.owayed.kareen.kareentaskmangr2018.R;
-import com.owayed.kareen.kareentaskmangr2018.SearchActivity;
 
 public class AnimalAdopter extends ArrayAdapter<Animal>
 {
@@ -52,7 +51,7 @@ public class AnimalAdopter extends ArrayAdapter<Animal>
         TextView etAddress=convertView.findViewById(R.id.etAddress);
 
         ImageButton ibPicture=convertView.findViewById(R.id.ibPicture);
-        Button btnIWant=convertView.findViewById(R.id.btnSave);
+        Button btnIWant=convertView.findViewById(R.id.btnMoreDetails);
 
         // put the data of the object on the view
         etPhoneNumber.setText(a.getPhoneNumber());

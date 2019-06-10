@@ -38,7 +38,7 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".DetailsOfAnimal" />
         <activity android:name=".activity_results" />
-        <activity android:name=".animalitem2"></activity>
+        <activity android:name=".ActivityDetails"></activity>
     </application>
 
 </manifest>

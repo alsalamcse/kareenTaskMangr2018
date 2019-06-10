@@ -33,7 +33,7 @@ public class AddOfAnimal extends AppCompatActivity {
         etMoney = findViewById(R.id.etMoney);
         ibPicture=findViewById(R.id.ibPicture);
         etAddress=findViewById(R.id.etAddress);
-        btnSave=findViewById(R.id.btnSave);
+        btnSave=findViewById(R.id.btnMoreDetails);
 
 
         btnSave.setOnClickListener(new View.OnClickListener() {

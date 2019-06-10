@@ -60,23 +60,23 @@ private FirebaseAuth auth;
 
     }
 
-    private void getProfile() {
-        if (etName.length() != 0 && etAge.length() != 0 && etPhone.length() != 0) {
+                   private void getProfile() {
+                    if (etName.length() != 0 && etAge.length() != 0 && etPhone.length() != 0) {
 
 
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-            String key = reference.child("MyProfile").push().getKey();
-            String email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
-            reference.child("MyProfile").child(email.replace('.','*')).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    // DataSnapshot d=dataSnapshot.getChildren().iterator().next();
-                    MyProfile p = dataSnapshot.getValue(MyProfile.class);
-                    etName.setText(p.getName());
-                    etAge.setText(p.getAge());
-                    etEmail.setText(p.getEmail());
-                    etPhone.setText(p.getPhoneNumber());
-                }
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+                        String key = reference.child("MyProfile").push().getKey();
+                        String email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                        reference.child("MyProfile").child(email.replace('.','*')).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                // DataSnapshot d=dataSnapshot.getChildren().iterator().next();
+                                MyProfile p = dataSnapshot.getValue(MyProfile.class);
+                                etName.setText(p.getName());
+                                etAge.setText(p.getAge());
+                                etEmail.setText(p.getEmail());
+                                etPhone.setText(p.getPhoneNumber());
+                            }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
