@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,7 +82,8 @@ public class AnimalAdopter extends ArrayAdapter<Animal>
                             Toast.makeText(getContext(),"Want Successful",Toast.LENGTH_LONG).show();
                             Intent i=new Intent(getContext(),MainTapsActivity.class);
 
-                            ((Activity)getContext()).finish();
+                            ((AppCompatActivity)getContext()).finish();
+                            //((AppCompatActivity) getContext()).startActivity(i);
                         }
                         else
                         {

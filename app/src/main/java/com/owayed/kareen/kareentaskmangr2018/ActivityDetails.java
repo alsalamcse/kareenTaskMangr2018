@@ -28,7 +28,7 @@ public class ActivityDetails extends AppCompatActivity {
         etNameDonor=findViewById(R.id.etNameDonor);
         etNumberDonor=findViewById(R.id.etNumberDonor);
 
-
+getProfile();
         Intent i=getIntent();
         if (i!=null&&i.hasExtra("animal"))
         {
@@ -36,40 +36,42 @@ public class ActivityDetails extends AppCompatActivity {
         }
 
 
-//        private final void getProfile() {
-//            if (etNameDonor.length() != 0 && etNumberDonor.length() != 0 && etEmailDonor.length() != 0) {
-//
-//
-//                DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-//                String key = reference.child("MyProfile").push().getKey();
-//                String email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
-//                reference.child("MyProfile").child(email.replace('.','*')).addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        // DataSnapshot d=dataSnapshot.getChildren().iterator().next();
-//                        MyProfile p = dataSnapshot.getValue(MyProfile.class);
-//                        etNameDonor.setText(p.getName());
-//                        etNumberDonor.setText(p.getAge());
-//                        etEmailDonor.setText(p.getEmail());
-//
-//
-//                    }
 
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//                        Toast.makeText(getBaseContext(), "onCancelled", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//
-//            } else {
-//                etNameDonor.setError("Enter Name");
-//                etNumberDonor.setError("Enter Number");
-//                etEmailDonor.setError("Enter Email");
-//
-//            }
+    }
+    private final void getProfile()
+    {
+        if (etNameDonor.length() != 0 && etNumberDonor.length() != 0 && etEmailDonor.length() != 0) {
+
+
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+            String key = reference.child("MyProfile").push().getKey();
+            String email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            reference.child("MyProfile").child(email.replace('.','*')).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // DataSnapshot d=dataSnapshot.getChildren().iterator().next();
+                    MyProfile p = dataSnapshot.getValue(MyProfile.class);
+                    etNameDonor.setText(p.getName());
+                    etNumberDonor.setText(p.getAge());
+                    etEmailDonor.setText(p.getEmail());
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(getBaseContext(), "onCancelled", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+        } else {
+            etNameDonor.setError("Enter Name");
+            etNumberDonor.setError("Enter Number");
+            etEmailDonor.setError("Enter Email");
+
         }
-//    }
+    }
 }
 
 

@@ -3,6 +3,7 @@ package com.owayed.kareen.kareentaskmangr2018.ownerfragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +12,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.owayed.kareen.kareentaskmangr2018.MainTapsActivity;
 import com.owayed.kareen.kareentaskmangr2018.R;
 import com.owayed.kareen.kareentaskmangr2018.WhoAskActivity;
 import com.owayed.kareen.kareentaskmangr2018.data.MyProfile;
@@ -46,10 +50,11 @@ private FirebaseAuth auth;
         etAge=view.findViewById(R.id.etAge);
         etEmail=view.findViewById(R.id.etEmail);
         btnSave=view.findViewById(R.id.btnsave);
+        getProfile();
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getProfile();
+
                 Intent intent=new Intent(getActivity(),WhoAskActivity.class);
             }
         });
@@ -61,7 +66,7 @@ private FirebaseAuth auth;
     }
 
                    private void getProfile() {
-                    if (etName.length() != 0 && etAge.length() != 0 && etPhone.length() != 0) {
+
 
 
                         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
@@ -84,12 +89,41 @@ private FirebaseAuth auth;
 
                 }
             });
-        }else {
-            etName.setError("Enter Name");
-            etAge.setError("Enter Age");
-            etEmail.setError("Enter Email");
-            etPhone.setError("Enter Phone Number");
         }
-    }
+    private void profiledatahandler() {
+        boolean isok = true;
+        String email = etEmail.getText().toString();
+        String fname = etName.getText().toString();
+        String phone = etPhone.getText().toString();
+        String Age=etAge.getText().toString();
 
+        MyProfile myProfile=new MyProfile();
+
+
+        myProfile.setName(fname);
+        myProfile.setEmail(email);
+        myProfile.setPhoneNumber(phone);
+        myProfile.setAge(Age);
+
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        myProfile.setEmail(email);
+
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+        myProfile.setKey(email);
+        reference.child("MyProfile").child(email.replace('.','*')).setValue(myProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(getContext(), "add Successful", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(getContext(), MainTapsActivity.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(getContext(), "add failed", Toast.LENGTH_LONG).show();
+
+                }
+
+
+            }
+        });
+    }
 }
