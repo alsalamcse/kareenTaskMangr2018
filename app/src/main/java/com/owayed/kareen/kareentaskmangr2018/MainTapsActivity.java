@@ -161,6 +161,7 @@ catch (Exception e)
                 if (whoRequestFragment==null) {
                     whoRequestFragment=  new WhoRequestFragment();
                 }
+
                 return whoRequestFragment;
             }
 //            if (position==1)
@@ -177,7 +178,7 @@ catch (Exception e)
                 }
                 return profileFragment;
             }
-            return PlaceholderFragment.newInstance(position + 1);
+            return null;
         }
 
         @Override

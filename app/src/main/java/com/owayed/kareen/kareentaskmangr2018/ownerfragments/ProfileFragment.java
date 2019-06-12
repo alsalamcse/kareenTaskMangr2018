@@ -77,11 +77,14 @@ private FirebaseAuth auth;
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 // DataSnapshot d=dataSnapshot.getChildren().iterator().next();
                                 MyProfile p = dataSnapshot.getValue(MyProfile.class);
-                                etName.setText(p.getName());
-                                etAge.setText(p.getAge());
-                                etEmail.setText(p.getEmail());
-                                etPhone.setText(p.getPhoneNumber());
-                            }
+                                if(p!=null) {
+                                    etName.setText(p.getName());
+                                    etAge.setText(p.getAge());
+                                    etEmail.setText(p.getEmail());
+                                    etPhone.setText(p.getPhoneNumber());
+                                }
+                                }
+
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
