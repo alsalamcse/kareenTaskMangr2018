@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,8 +47,8 @@ getProfile();
 
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
             String key = reference.child("MyProfile").push().getKey();
-            String email=FirebaseAuth.getInstance().getCurrentUser().getEmail();
-            reference.child("MyProfile").child(email.replace('.','*')).addValueEventListener(new ValueEventListener() {
+            String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            reference.child("MyProfile").child(email.replace('.', '*')).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // DataSnapshot d=dataSnapshot.getChildren().iterator().next();
@@ -58,6 +60,7 @@ getProfile();
 
                 }
 
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     Toast.makeText(getBaseContext(), "onCancelled", Toast.LENGTH_SHORT).show();
@@ -65,14 +68,17 @@ getProfile();
             });
 
 
-        } else {
-            etNameDonor.setError("Enter Name");
-            etNumberDonor.setError("Enter Number");
-            etEmailDonor.setError("Enter Email");
+                }else
 
-        }
-    }
-}
+                    {
+                        etNameDonor.setError("Enter Name");
+                        etNumberDonor.setError("Enter Number");
+                        etEmailDonor.setError("Enter Email");
+
+                    }
+                }
+            }
+
 
 
 

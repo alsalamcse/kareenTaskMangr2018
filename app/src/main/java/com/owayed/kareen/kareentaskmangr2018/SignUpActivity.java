@@ -111,6 +111,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(SignUpActivity.this, "Authentication successful", Toast.LENGTH_SHORT).show();
+
                     profiledatahandler();
                 } else {
                     Toast.makeText(SignUpActivity.this, "Authenication faild" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -148,7 +149,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (task.isSuccessful())
                 {
                     Toast.makeText(getBaseContext(),"add Successful",Toast.LENGTH_LONG).show();
-                    Intent i=new Intent(getBaseContext(),MainTapsActivity.class);
+                    Intent i=new Intent(getBaseContext(),LogInActivity.class);
                     startActivity(i);
                 }
                 else
